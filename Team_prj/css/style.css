@@ -1,0 +1,23 @@
+body {
+  background: url(../images/couple-560783_1920.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-box-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+section {
+  margin-bottom: 150px;
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.box {
+  display: flex;
+  gap: 5px;
+}
+.box a {
+  background: url(http://placehold.it/300x300) no-repeat;
+  width: 300px;
+  height: 300px;
+  gap: 5px;
+}

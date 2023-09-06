@@ -13,7 +13,7 @@
 
 <body>
     <!-- 네이게이션 바 만들기_부트스트랩 시작 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="/">Dateing</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -32,23 +32,32 @@
                         <a class="nav-link" href="/about_me/">CAFE</a>
                     </li>
                 </ul>
-
-                <!-- Log In 버튼 -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
-                    </li>
-                </ul>
-                <!-- Log In 버튼 끝-->
             </div>
         </div>
+        <!-- Log In 버튼 -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+            </li>
+        </ul>
+        <!-- Log In 버튼 끝-->
         <hr>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    </nav>
+    <nav class="navbar2 navbar-expand-lg">
+        <div class="container navbar-dark nav-fill sec_nav navbar-dark">
+            <a class="navbar-brand" href="/">Dateing</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
     </nav>
     <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+
     <!-- 로그인 Modal 시작 -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -84,7 +93,10 @@
         </div>
     </div>
     <!-- 로그인 Modal 끝 -->
-    <section>
+
+    <!-- POST PAGE START -->
+
+    <section class="section2">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6 text-info">
@@ -93,6 +105,14 @@
                     <div class="box">
                         <a href="#">asd</a>
                         <a href="#">sdf</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">dfg</a>
+                        <a href="#">fgh</a>
+                    </div>
+                    <div class="box">
+                        <a href="#">dfg</a>
+                        <a href="#">fgh</a>
                     </div>
                     <div class="box">
                         <a href="#">dfg</a>
@@ -109,15 +129,47 @@
                     <br>
                     <br>
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <br>
+                    <br>
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <br>
+                    <br>
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 끝 -->
             </div>
         </div>
     </section>
+    <section class="section1">
+        <div class="container con1">
+            <div class="maincon">
+                <h1>콘텐츠</h1>
+                <br>
+                <img src="http://placehold.it/200x200" alt="">
+                <p>이런 저런 콘텐츠가 있다.</p>
+            </div>
+            <div class="maincon">
+                <h1>콘텐츠</h1>
+                <br>
+                <img src="http://placehold.it/200x200" alt="">
+                <p>이런 저런 콘텐츠가 있다.</p>
+            </div>
+            <div class="maincon">
+                <h1>콘텐츠</h1>
+                <br>
+                <img src="http://placehold.it/200x200" alt="">
+                <p>이런 저런 콘텐츠가 있다.</p>
+            </div>
 
+        </div>
+        <div class="text">
+            <p>이러 저러한거 해서 이렇게 해서 <br> 이렇게 만들고 이렇게 하면 될거같습니다.</p>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <div class="fixed-bottom">
-        <!-- Footer -->
         <footer class="py-5 bg-dark">
             <div class="container">
                 <p class="m-0 text-center text-white">

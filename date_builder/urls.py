@@ -25,4 +25,5 @@ urlpatterns = [
     path('food/', views.food),
     path('cafe/', views.cafe),
     path('play/', views.play),
+    path('markdownx/', include('markdownx.urls')),
 ]

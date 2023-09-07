@@ -5,17 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://e7.pngegg.com/pngimages/333/806/png-clipart-heart-open-free-content-heart-love-heart-thumbnail.png"
+        type="image/x-icon" />
     <title>Do It Djaogo</title>
     <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/landing.css">
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-
     <!-- 네이게이션 바 만들기_부트스트랩 시작 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="/">Dateing</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -34,22 +35,32 @@
                         <a class="nav-link" href="/about_me/">CAFE</a>
                     </li>
                 </ul>
-
-                <!-- Log In 버튼 -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
-                    </li>
-                </ul>
-                <!-- Log In 버튼 끝-->
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <!-- Log In 버튼 -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+            </li>
+        </ul>
+        <!-- Log In 버튼 끝-->
+        <hr>
+    </nav>
+    <nav class="navbar2 navbar-expand-lg">
+        <div class="container navbar-dark nav-fill sec_nav navbar-dark">
+            <a class="navbar-brand" href="/">Dateing</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
     </nav>
     <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+
     <!-- 로그인 Modal 시작 -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -85,19 +96,30 @@
         </div>
     </div>
     <!-- 로그인 Modal 끝 -->
-    <section>
+
+    <!-- POST PAGE START -->
+
+    <section class="section2">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6 text-info">
                     <h1 class="mt-5">Dateing</h1>
                     <p>데이트 코스가 고민인 당신에게 추천드립니다!</p>
                     <div class="box">
-                        <a href="#">asd</a>
-                        <a href="#">sdf</a>
+                        <a href="#"></a>
+                        <a href="#"></a>
                     </div>
                     <div class="box">
-                        <a href="#">dfg</a>
-                        <a href="#">fgh</a>
+                        <a href="#"></a>
+                        <a href="#"></a>
+                    </div>
+                    <div class="box">
+                        <a href="#"></a>
+                        <a href="#"></a>
+                    </div>
+                    <div class="box">
+                        <a href="#"></a>
+                        <a href="#"></a>
                     </div>
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 -->
@@ -110,15 +132,47 @@
                     <br>
                     <br>
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <br>
+                    <br>
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <br>
+                    <br>
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 끝 -->
             </div>
         </div>
     </section>
+    <section class="section1">
+        <div class="container con1">
+            <div class="maincon">
+                <h1>콘텐츠</h1>
+                <br>
+                <img src="http://placehold.it/200x200" alt="">
+                <p>이런 저런 콘텐츠가 있다.</p>
+            </div>
+            <div class="maincon">
+                <h1>콘텐츠</h1>
+                <br>
+                <img src="http://placehold.it/200x200" alt="">
+                <p>이런 저런 콘텐츠가 있다.</p>
+            </div>
+            <div class="maincon">
+                <h1>콘텐츠</h1>
+                <br>
+                <img src="http://placehold.it/200x200" alt="">
+                <p>이런 저런 콘텐츠가 있다.</p>
+            </div>
 
+        </div>
+        <div class="text">
+            <p>이러 저러한거 해서 이렇게 해서 <br> 이렇게 만들고 이렇게 하면 될거같습니다.</p>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <div class="fixed-bottom">
-        <!-- Footer -->
         <footer class="py-5 bg-dark">
             <div class="container">
                 <p class="m-0 text-center text-white">
@@ -139,6 +193,7 @@
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
         crossorigin="anonymous"></script>
     <!-- 부트스트랩 자바스크립트 끝 -->
+
 </body>
 
 </html>

@@ -8,7 +8,7 @@ import os
 class Restaurant(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-    create_date = models.DateTimeField()
+    create_date = models.DateTimeField(auto_now_add=True)
 
     def get_content_markdown(self):
       return markdown(self.content)
@@ -19,7 +19,7 @@ class Restaurant(models.Model):
 class Cafe(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-    create_date = models.DateTimeField()
+    create_date = models.DateTimeField(auto_now_add=True)
 
     def get_content_markdown(self):
       return markdown(self.content)
@@ -30,7 +30,7 @@ class Cafe(models.Model):
 class Play(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-    create_date = models.DateTimeField()
+    create_date = models.DateTimeField(auto_now_add=True)
 
     def get_content_markdown(self):
       return markdown(self.content)

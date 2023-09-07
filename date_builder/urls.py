@@ -23,7 +23,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index),
-    path('main/', views.main ),
+    path('nav/', views.main ),
     path('markdownx/', include('markdownx.urls')),
 ]
 

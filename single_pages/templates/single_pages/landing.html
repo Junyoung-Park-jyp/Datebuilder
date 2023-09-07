@@ -1,22 +1,21 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon"
-        href="https://e7.pngegg.com/pngimages/333/806/png-clipart-heart-open-free-content-heart-love-heart-thumbnail.png"
-        type="image/x-icon" />
-    <title>Do It Djaogo</title>
-    <link rel="stylesheet" href="./bootstrap4/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="./css/landing.css">
+    <title>팀플 프론트페이지</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}"
+        media="screen">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!-- 네이게이션 바 만들기_부트스트랩 시작 -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container navbar-dark nav-fill navbar-dark">
             <a class="navbar-brand" href="/">Dateing</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,20 +32,32 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/about_me/">CAFE</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            MORE
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">정보</a>
+                            <a class="dropdown-item" href="#">사진</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">추천코스</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
+            <!-- Log In 버튼 -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+                </li>
+            </ul>
+            <!-- Log In 버튼 끝-->
+            <hr>
         </div>
-        <!-- Log In 버튼 -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
-            </li>
-        </ul>
-        <!-- Log In 버튼 끝-->
-        <hr>
     </nav>
-    <nav class="navbar2 navbar-expand-lg">
-        <div class="container navbar-dark nav-fill sec_nav navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <div class="container navbar-dark nav-fill navbar-dark">
             <a class="navbar-brand" href="/">Dateing</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,31 +105,20 @@
             </div>
         </div>
     </div>
-    <!-- 로그인 Modal 끝 -->
-
-    <!-- POST PAGE START -->
-
-    <section class="section2">
+    <!-- 메인 컨텐츠 -->
+    <section>
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6 text-info">
                     <h1 class="mt-5">Dateing</h1>
                     <p>데이트 코스가 고민인 당신에게 추천드립니다!</p>
-                    <div class="box">
-                        <a href="#">asd</a>
-                        <a href="#">sdf</a>
+                    <div class="col-lg-5" style="display: flex; gap: 5px;">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
                     </div>
-                    <div class="box">
-                        <a href="#">dfg</a>
-                        <a href="#">fgh</a>
-                    </div>
-                    <div class="box">
-                        <a href="#">dfg</a>
-                        <a href="#">fgh</a>
-                    </div>
-                    <div class="box">
-                        <a href="#">dfg</a>
-                        <a href="#">fgh</a>
+                    <div class="col-lg-5" style="display: flex; gap: 5px; margin-top: 5px;">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
                     </div>
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 -->
@@ -131,48 +131,16 @@
                     <br>
                     <br>
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <br>
-                    <br>
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <br>
-                    <br>
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 끝 -->
             </div>
         </div>
     </section>
-    <section class="section1">
-        <div class="container con1">
-            <div class="maincon">
-                <h1>콘텐츠</h1>
-                <br>
-                <img src="http://placehold.it/200x200" alt="">
-                <p>이런 저런 콘텐츠가 있다.</p>
-            </div>
-            <div class="maincon">
-                <h1>콘텐츠</h1>
-                <br>
-                <img src="http://placehold.it/200x200" alt="">
-                <p>이런 저런 콘텐츠가 있다.</p>
-            </div>
-            <div class="maincon">
-                <h1>콘텐츠</h1>
-                <br>
-                <img src="http://placehold.it/200x200" alt="">
-                <p>이런 저런 콘텐츠가 있다.</p>
-            </div>
 
-        </div>
-        <div class="text">
-            <p>이러 저러한거 해서 이렇게 해서 <br> 이렇게 만들고 이렇게 하면 될거같습니다.</p>
-        </div>
-    </section>
 
-    <!-- Footer -->
     <div class="fixed-bottom">
-        <footer class="py-5 bg-dark">
+        <!-- Footer -->
+        <footer class="py-5 bg-success">
             <div class="container">
                 <p class="m-0 text-center text-white">
                     Copyright &copy; Himedia bidgata Website 2023
@@ -192,7 +160,6 @@
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
         crossorigin="anonymous"></script>
     <!-- 부트스트랩 자바스크립트 끝 -->
-
 </body>
 
 </html>

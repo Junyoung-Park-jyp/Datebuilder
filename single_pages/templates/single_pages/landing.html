@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>팀플 프론트페이지</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}" media="screen">
-    <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}"
+        media="screen">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!-- 네이게이션 바 만들기_부트스트랩 시작 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <div class="container">
+        <div class="container navbar-dark nav-fill navbar-dark">
             <a class="navbar-brand" href="/">Dateing</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,24 +32,45 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/about_me/">CAFE</a>
                     </li>
-                </ul>
-
-                <!-- Log In 버튼 -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            MORE
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">정보</a>
+                            <a class="dropdown-item" href="#">사진</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">추천코스</a>
+                        </div>
                     </li>
                 </ul>
-                <!-- Log In 버튼 끝-->
             </div>
+            <!-- Log In 버튼 -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+                </li>
+            </ul>
+            <!-- Log In 버튼 끝-->
+            <hr>
         </div>
-        <hr>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <div class="container navbar-dark nav-fill navbar-dark">
+            <a class="navbar-brand" href="/">Dateing</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
     </nav>
     <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+
     <!-- 로그인 Modal 시작 -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -83,20 +105,20 @@
             </div>
         </div>
     </div>
-    <!-- 로그인 Modal 끝 -->
+    <!-- 메인 컨텐츠 -->
     <section>
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6 text-info">
                     <h1 class="mt-5">Dateing</h1>
                     <p>데이트 코스가 고민인 당신에게 추천드립니다!</p>
-                    <div class="box">
-                        <a href="#">asd</a>
-                        <a href="#">sdf</a>
+                    <div class="col-lg-5" style="display: flex; gap: 5px;">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
                     </div>
-                    <div class="box">
-                        <a href="#">dfg</a>
-                        <a href="#">fgh</a>
+                    <div class="col-lg-5" style="display: flex; gap: 5px; margin-top: 5px;">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
+                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
                     </div>
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 -->
@@ -118,7 +140,7 @@
 
     <div class="fixed-bottom">
         <!-- Footer -->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-success">
             <div class="container">
                 <p class="m-0 text-center text-white">
                     Copyright &copy; Himedia bidgata Website 2023

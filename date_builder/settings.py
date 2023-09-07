@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'widget_tweaks',
     'single_pages',
     'blog',
     'crispy_forms',
@@ -134,3 +134,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'index'

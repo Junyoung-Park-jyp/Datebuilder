@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index, name='index'),
     path('nav/', views.main),
-    path('login',views.login),
+    path('login/',views.login),
     path('', include('allauth.urls')),
     # path('main/restaurant', views.restaurant),
     # path('main/cafe', views.cafe),

@@ -1,7 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def index(request):
-  return HttpResponse("Test 성공!")
+    return render(request, 'single_pages/index.html')
+  
 
 def site(request):
   return HttpResponse("위치 검색 페이지 url")

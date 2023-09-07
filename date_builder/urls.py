@@ -23,10 +23,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index),
-    path('site/', views.site ),
-    path('food/', views.food),
-    path('cafe/', views.cafe),
-    path('play/', views.play),
+    path('main/', views.main ),
     path('markdownx/', include('markdownx.urls')),
 ]
 

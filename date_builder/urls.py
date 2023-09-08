@@ -24,7 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index, name='index'),
     path('nav/', views.main),
+<<<<<<< HEAD
     path('login/',views.login),
+=======
+    path('login',views.login),
+>>>>>>> ea3eb31283cdcccdfbb67f50688bd060e7c9f398
     path('', include('allauth.urls')),
     # path('main/restaurant', views.restaurant),
     # path('main/cafe', views.cafe),

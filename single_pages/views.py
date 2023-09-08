@@ -49,3 +49,6 @@ def place(request):
 
 def review(request):
     return render(request, 'single_pages/review.html')
+
+def date_course(request):
+    return render(request, 'single_pages/date_course.html')

@@ -6,4 +6,5 @@ urlpatterns = [
     path('cafe/', views.cafe),
     path('place/', views.place),
     path('review/', views.review),
+    path('date_course/', views.date_course),
 ]

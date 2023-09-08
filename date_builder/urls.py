@@ -30,6 +30,10 @@ urlpatterns = [
     # path('main/cafe', views.cafe),
     # path('main/play', views.play),
     path('markdownx/', include('markdownx.urls')),
+    path('common/', include('common.urls')),
+    # path('searchbar/', ('single_pages.urls')),index
+    
+
 ]
 
 if settings.DEBUG:

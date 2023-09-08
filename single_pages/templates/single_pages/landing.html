@@ -6,13 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>팀플 프론트페이지</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}"
+    <link rel="stylesheet" type="text/css" href="{% static '/single_pages/bootstrap/bootstrap.min.css' %}"
         media="screen">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'landing.css' %}">
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+<<<<<<< HEAD
     <!-- 네이게이션 바 만들기_부트스트랩 시작 -->
 <!-- {% include 'single_pages/searchbar.html' %} -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
@@ -39,6 +40,10 @@
             </div>
         </nav>
         <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+=======
+
+    {% include 'single_pages/navbar.html' %}
+>>>>>>> 3d258ebe1010dc7a5a12660344daba859c5590cd
 
     <!-- 로그인 Modal 시작 -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -75,31 +80,39 @@
         </div>
     </div>
     <!-- 메인 컨텐츠 -->
-    <section>
+    <section style="background-color:#d4addc;">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-lg-6 text-info">
+                <div class="col-lg-6 text-success">
                     <h1 class="mt-5">Dateing</h1>
-                    <p>데이트 코스가 고민인 당신에게 추천드립니다!</p>
-                    <div class="col-lg-5" style="display: flex; gap: 5px;">
-                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
-                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
-                    </div>
-                    <div class="col-lg-5" style="display: flex; gap: 5px; margin-top: 5px;">
-                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
-                        <img class="card-img-top" src="http://placehold.it/300x300" alt="Card image cap">
+                    <b>데이트 코스가 고민인 당신에게 추천드립니다!</b>
+                    <div class="card mt-1">
+                        <div class="card-body">
+                            <div class="col-lg-6 mt-3" style="display: flex; gap: 20px;">
+                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
+                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
+                            </div>
+                            <div class="col-lg-6" style="display: flex; gap: 20px; margin-top: 20px;">
+                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
+                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 -->
                 <div class="col-lg-5 mt-5">
-                    <h2 class="text-info">추천코스</h2>
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <br>
-                    <br>
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <br>
-                    <br>
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <h1 class="text-success">추천 코스</h1>
+                    <div class="card mt-1">
+                        <div class="card-body">
+                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                            <br>
+                            <br>
+                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                            <br>
+                            <br>
+                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                        </div>
+                    </div>
                 </div>
                 <!-- 대문에 최신 포스트 나타내기 끝 -->
             </div>
@@ -107,12 +120,12 @@
     </section>
 
 
+    <!-- Footer -->
     <div class="fixed-bottom">
-        <!-- Footer -->
         <footer class="py-5 bg-success">
             <div class="container">
                 <p class="m-0 text-center text-white">
-                    Copyright &copy; Himedia bidgata Website 2023
+                    Copyright &copy; 이제부터 시작인데 벌써부터 막막한게 이게 맞는건가 싶고 재미있다가도 어렵고..
                 </p>
             </div>
             <!-- /.container -->

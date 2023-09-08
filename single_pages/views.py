@@ -46,3 +46,6 @@ def cafe(request):
 
 def place(request):
     return render(request, 'single_pages/place.html')
+
+def review(request):
+    return render(request, 'single_pages/review.html')

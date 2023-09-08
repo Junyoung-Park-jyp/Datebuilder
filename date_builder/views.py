@@ -11,3 +11,5 @@ def site(request):
 def main(request):
     return render(request, 'single_pages/base.html')
 
+def login(request):
+    return render(request, 'common/login.html')

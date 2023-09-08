@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'widget_tweaks',
+    
     'single_pages',
     'blog',
     'crispy_forms',
@@ -65,13 +65,9 @@ ROOT_URLCONF = 'date_builder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
-        'DIRS': [BASE_DIR / 'templates'],
-=======
         'DIRS': [
             os.path.join(BASE_DIR, 'templates')
         ],
->>>>>>> ha
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

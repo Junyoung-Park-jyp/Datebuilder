@@ -1,14 +1,6 @@
 from django.shortcuts import render
 from .models import Post
 
-<<<<<<< HEAD
-# Create your views here.
-def searchbar(request):
-    return render(request, 'single_pages/searchbar.html')
-
-# def base(request):
-#     return render(request, 'single_pages/base.html')
-=======
 # 포스트 연결하기 테스트
 from single_pages.models import Post
 
@@ -45,4 +37,6 @@ def landing(request):
         }
     )
 # 포스트 연결하기 테스트
->>>>>>> 3d258ebe1010dc7a5a12660344daba859c5590cd
+
+def food(request):
+    return render(request, 'single_pages/food.html')

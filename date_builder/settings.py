@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'markdownx',
     'allauth',
     'allauth.account',
-    'common',
+  
 ]
 
 MIDDLEWARE = [

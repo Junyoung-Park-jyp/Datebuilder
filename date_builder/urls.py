@@ -18,18 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index, name='index'),
     path('nav/', views.main),
-    path('login',views.login),
     path('', include('allauth.urls')),
-    # path('main/restaurant', views.restaurant),
-    # path('main/cafe', views.cafe),
-    # path('main/play', views.play),
     path('markdownx/', include('markdownx.urls')),
+    path('account/login/', auth_views.LoginView.as_view(), name='login'),
 ]
 
 if settings.DEBUG:

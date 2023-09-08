@@ -13,32 +13,8 @@
 </head>
 
 <body>
-    <!-- 네이게이션 바 만들기_부트스트랩 시작 -->
-<!-- {% include 'single_pages/searchbar.html' %} -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
-        <div class="container navbar-dark nav-fill navbar-dark">
-            <a class="navbar-brand" href="/">Dating</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
 
-                    <form class="form-inline my-2 my-lg-0 ml-auto">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
-                    </li>
-                </ul>  
-            </div>
-        </nav>
-        <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+    {% include 'single_pages/navbar.html' %}
 
     <!-- 로그인 Modal 시작 -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">

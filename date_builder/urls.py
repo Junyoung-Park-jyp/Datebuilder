@@ -16,11 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+    path('' , views.index, name='index'),
+    path('nav/', views.main),
+    path('login',views.login),
+    path('', include('allauth.urls')),
+    # path('main/restaurant', views.restaurant),
+    # path('main/cafe', views.cafe),
+    # path('main/play', views.play),
+    path('markdownx/', include('markdownx.urls')),
+    path('common/', include('common.urls')),
     # path('searchbar/', ('single_pages.urls')),index
     
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -40,3 +40,9 @@ def landing(request):
 
 def food(request):
     return render(request, 'single_pages/food.html')
+
+def cafe(request):
+    return render(request, 'single_pages/cafe.html')
+
+def place(request):
+    return render(request, 'single_pages/place.html')

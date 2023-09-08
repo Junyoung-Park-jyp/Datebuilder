@@ -31,9 +31,8 @@ urlpatterns = [
     # path('main/play', views.play),
     path('markdownx/', include('markdownx.urls')),
     # path('searchbar/', ('single_pages.urls')),index
-    path('food/', include('single_pages.urls')),
+    path('single_pages/', include('single_pages.urls')),
     
-
 ]
 
 if settings.DEBUG:

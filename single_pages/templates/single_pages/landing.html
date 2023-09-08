@@ -8,49 +8,58 @@
     <title>팀플 프론트페이지</title>
     <link rel="stylesheet" type="text/css" href="{% static '/single_pages/bootstrap/bootstrap.min.css' %}"
         media="screen">
-    <link rel="stylesheet" href="{% static 'landing.css' %}">
+    <link rel="stylesheet" href="{% static '/single_pages/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static '/single_pages/css/landing.css' %}">
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
+    <script defer src="{% static '/single_pages/js/map.js' %}"></script>
+    <script>
+        initMap = function () { }
+    </script>
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjR8tbrGZ54XS1oR_tnCG0P_Eie4xYtPc&callback=initMap"></script>
 </head>
 
-<body>
 
+<body>
     {% include 'single_pages/navbar.html' %}
 
-    <!-- 로그인 Modal 시작 -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">
-                        <i class="fa-solid fa-right-to-bracket"></i>&nbsp; Log In
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a role="button" class="btn btn-outline-dark btn-block btn-sm"
-                                href="/account/google/login/">
-                                <i class="fa-brands fa-google"></i>&nbsp; Log in with Google</a>
-                            <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/login/">
-                                <i class="fa-regular fa-envelope"></i>&nbsp;&nbsp; Log in Username</a>
-                        </div>
-                        <div class="col-md-6">
-                            <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/signup/">
-                                <i class="fa-regular fa-envelope"></i>&nbsp;&nbsp; Sign Up with E-mail</a>
-                        </div>
+
+    <!-- 메인 컨텐츠 -->
+    <!-- Map 컨텐츠 영역 -->
+    <div id="map" style="height: 900px;"></div>
+    <div class="container">
+        <!-- 대문에 최신 포스트 나타내기 -->
+        <div class="col-lg-5 mt-5 map-info">
+            <div class="card mt-1 card-info">
+                <div class="card-body">
+                    <img class="card-img-top" src="http://placehold.it/350x300" alt="Card image cap">
+                    <div class="card-info-text">
+                        <a href="#" class="shop-name">{가게이름} &rarr;</a>
+                        <ul class="card-text">
+                            <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
+                            <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
+                            </li>
+                            <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="info-option">
+
+                    <div class="option-title">
+                        <i class="fa-solid fa-map"></i>
+                        <span class="text">길찾기</span>
+                    </div>
+
+                    <div class="info-option-button">
+                        <a type="button" class="info-option-btn"><img src="http://placehold.it/50x50" alt=""></a>
+                        <a type="button" class="info-option-btn"><img src="http://placehold.it/50x50" alt=""></a>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- 대문에 최신 포스트 나타내기 끝 -->
     </div>
-    <!-- 메인 컨텐츠 -->
+
     <section style="background-color:#d4addc;">
         <div class="container">
             <div class="row justify-content-between">
@@ -70,38 +79,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- 대문에 최신 포스트 나타내기 -->
-                <div class="col-lg-5 mt-5">
-                    <h1 class="text-success">추천 코스</h1>
-                    <div class="card mt-1">
-                        <div class="card-body">
-                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                            <br>
-                            <br>
-                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                            <br>
-                            <br>
-                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-                <!-- 대문에 최신 포스트 나타내기 끝 -->
+
             </div>
         </div>
     </section>
 
+    {% include 'single_pages/footer.html' %}
 
-    <!-- Footer -->
-    <div class="fixed-bottom">
-        <footer class="py-5 bg-success">
-            <div class="container">
-                <p class="m-0 text-center text-white">
-                    Copyright &copy; 이제부터 시작인데 벌써부터 막막한게 이게 맞는건가 싶고 재미있다가도 어렵고..
-                </p>
-            </div>
-            <!-- /.container -->
-        </footer>
-    </div>
     <!-- 부트스트랩 자바스크립트 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -113,6 +97,8 @@
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
         crossorigin="anonymous"></script>
     <!-- 부트스트랩 자바스크립트 끝 -->
+
+    <!-- Map 자바스크립트 -->
 </body>
 
 </html>

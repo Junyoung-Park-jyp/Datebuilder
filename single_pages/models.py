@@ -15,6 +15,8 @@ class Category(models.Model):
     
     def get_absolute_url(self):
         return "notyet"
+    class Meta:
+        verbose_name_plural = 'Categories'
     
 #Tag 모델 제작
 class Tag(models.Model):
@@ -28,8 +30,7 @@ class Tag(models.Model):
         return "notyet"
 #url주소는 차후 제작
     
-    class Meta:
-        verbose_name_plural = 'Categories'
+
 #Category, Tags 사용 예시
 class Restaurant(models.Model):
     subject = models.CharField(max_length=40)

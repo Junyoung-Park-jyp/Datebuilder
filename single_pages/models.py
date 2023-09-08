@@ -20,10 +20,6 @@ class Cafe(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
     create_date = models.DateTimeField(auto_now_add=True)
-<<<<<<< HEAD
-=======
-    updated_date = models.DateTimeField(auto_now=True)
->>>>>>> kk
 
     def get_content_markdown(self):
       return markdown(self.content)

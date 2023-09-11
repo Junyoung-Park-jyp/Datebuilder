@@ -39,10 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-=======
-    'widget_tweaks',
->>>>>>> 30a89a834a531effc72f6b719f8a63e70bebb3d5
     'single_pages',
     'blog',
     'crispy_forms',

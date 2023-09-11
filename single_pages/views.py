@@ -54,8 +54,6 @@ def review(request):
 
 def date_course(request):
     return render(request, 'single_pages/date_course.html')
-<<<<<<< HEAD
-=======
 
 
 class CafeList(ListView):

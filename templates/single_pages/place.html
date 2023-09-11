@@ -26,6 +26,7 @@
             </div>
         </header>
 
+        {% for place in placess %}
         <!-- Page Content-->
         <section class="pt-4">
             <div class="container px-lg-5">
@@ -35,58 +36,14 @@
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></div>
-                                    <h2 class="fs-4 fw-bold">잠실 롯데월드</h2>
-                                    <p class="mb-0">특별한 날을 만들어보세요!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
-                                <h2 class="fs-4 fw-bold">합정 카페거리</h2>
-                                <p class="mb-0">특별한 날을 만들어보세요!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
-                                <h2 class="fs-4 fw-bold">강남 버거거리</h2>
-                                <p class="mb-0">특별한 날을 만들어보세요!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
-                                <h2 class="fs-4 fw-bold">홍대 클럽거리</h2>
-                                <p class="mb-0">특별한 날을 만들어보세요!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-code"></i></div>
-                                <h2 class="fs-4 fw-bold">신사 가로수길</h2>
-                                <p class="mb-0">특별한 날을 만들어보세요!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-patch-check"></i></div>
-                                <h2 class="fs-4 fw-bold">청담 웨딩거리</h2>
-                                <p class="mb-0">특별한 날을 만들어보세요!</p>
+                                    <h2 class="fs-4 fw-bold"><img class="card-img-top" src="{{ place.head_image.url }}" alt=""></h2>
+                                    <p class="mb-0">{{ place.subject }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
                     <hr class="my-0" />

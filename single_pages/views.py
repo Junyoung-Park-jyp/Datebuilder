@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Cafe
+from django.views.generic import *
 
 # 포스트 연결하기 테스트
 from single_pages.models import Post
@@ -42,8 +43,8 @@ def landing(request):
 def food(request):
     return render(request, 'single_pages/food.html')
 
-def cafe(request):
-    return render(request, 'single_pages/cafe.html')
+# def cafe(request):
+#     return render(request, 'single_pages/cafe.html')
 
 def place(request):
     return render(request, 'single_pages/place.html')
@@ -53,3 +54,12 @@ def review(request):
 
 def date_course(request):
     return render(request, 'single_pages/date_course.html')
+<<<<<<< HEAD
+=======
+
+
+class CafeList(ListView):
+    model = Cafe
+    template_name = "single_pages/cafe.html"
+    context_object_name = "cafes"
+>>>>>>> ha

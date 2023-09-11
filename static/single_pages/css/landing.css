@@ -1,3 +1,66 @@
+section {
+  margin-bottom: 150px;
+}
+.navbar {
+  background: #82d8d9;
+}
+.navbar2 {
+  background: #f1cc63;
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.box {
+  display: flex;
+  gap: 5px;
+}
+.box a {
+  background: url(http://placehold.it/250x250) no-repeat;
+  width: 250px;
+  height: 250px;
+  margin-top: 5px;
+}
+.sec_nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+.sec_nav a {
+  font-size: 30px;
+  color: rgba(244, 202, 99, 0.6);
+}
+.section1 {
+  background: url(../images/cat-4542301_1920.jpg) no-repeat;
+  height: 1280px;
+  position: relative;
+  text-align: center;
+  padding: 30px;
+}
+.con1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 1000px;
+}
+.maincon h1 {
+  color: #8acb8d;
+}
+.maincon img {
+  border-radius: 50%;
+}
+.maincon p {
+  color: #8acb8d;
+  font-size: 1.5em;
+}
+.text p {
+  color: #8acb8d;
+  font-size: 3.5rem;
+}
+.section2 {
+  background: url(../images/cat-4542301_1920.jpg) no-repeat;
+  height: 1280px;
+}
 .map-info {
   position: absolute;
   left: 66%;

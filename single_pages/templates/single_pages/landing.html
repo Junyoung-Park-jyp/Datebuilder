@@ -8,32 +8,49 @@
     <title>팀플 프론트페이지</title>
     <link rel="stylesheet" type="text/css" href="{% static '/single_pages/bootstrap/bootstrap.min.css' %}"
         media="screen">
-    <link rel="stylesheet" href="{% static 'landing.css' %}">
+    <link rel="stylesheet" href="{% static '/single_pages/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static '/single_pages/css/landing.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
     <script defer src="{% static '/single_pages/js/map.js' %}"></script>
-    <script>
-        initMap = function () { }
+    <!-- 네이버 맵 -->
+    <script type="text/javascript"
+        src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=k4os2wqjdc&callback=initMap"></script>
+    <script type="text/javascript">
+        var map = null;
+
+        function initMap() {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(37.3595704, 127.105399),
+                zoom: 10
+            });
+        }
     </script>
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjR8tbrGZ54XS1oR_tnCG0P_Eie4xYtPc&callback=initMap"></script>
 </head>
 <body>
     {% include 'single_pages/navbar.html' %}
 
-
     <!-- 메인 컨텐츠 -->
+
     <!-- Map 컨텐츠 영역 -->
-    <div id="map" data-toggle="modal" data-target="#mapModal"  style="height: 900px;"></div>
+    <div id="map" style="height: 900px;"></div>
+    <!-- Map 컨텐츠 영역 끝 -->
+
+    <!-- 좌표값의 정보를 카드에 뿌려주기 -->
     <div class="container">
         <!-- 대문에 최신 포스트 나타내기 -->
-        <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="mapModalLabel">&nbsp 이름넣기</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+        <div class="col-lg-5 mt-5 map-info">
+            <div class="card mt-1 card-info">
+                <div class="card-body">
+                    <img class="card-img-top" src="http://placehold.it/250x300" alt="Card image cap">
+                    <div class="card-info-text">
+                        <a href="#" class="shop-name">{ label } &rarr;</a>
+                        <ul class="card-text">
+                            <li><i class="fas fa-map-marker-alt"></i><span class="text">{position}</span></li>
+                            <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
+                            </li>
+                            <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
+                        </ul>
                     </div>
                     <div class="modal-body">
                         <img class="card-img-top" src="http://placehold.it/350x300" alt="Card image cap">
@@ -62,47 +79,59 @@
                 </div>
             </div>
         </div>
-        <!-- 대문에 최신 포스트 나타내기 끝 -->
     </div>
-    <!-- 메인 컨텐츠 -->
+    <!-- 좌표값의 정보를 카드에 뿌려주기 -->
+    <div class="hum">
+        <div class="container">
+            <h1>한번쯤 가볼만한 곳</h1>
+        </div>
+    </div>
+    <!-- 인기 맛집 슬라이드 -->
+    <section class="slider">
+        <div class="container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="http://placehold.it/1150x450" alt=""></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/1150x450" alt=""></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/1150x450" alt=""></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <!-- 인기 맛집 슬라이드 -->
+
+    <!-- 추천코스 영역 -->
     <section style="background-color:#d4addc;">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6 text-success">
                     <h1 class="mt-5">Dateing</h1>
                     <b>데이트 코스가 고민인 당신에게 추천드립니다!</b>
+                    {% for post in recent_posts %}
                     <div class="card mt-1">
                         <div class="card-body">
-                            <div class="col-lg-6 mt-3" style="display: flex; gap: 20px;">
-                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
-                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
-                            </div>
-                            <div class="col-lg-6" style="display: flex; gap: 20px; margin-top: 20px;">
-                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
-                                <img class="card-img-top" src="http://placehold.it/450x300" alt="Card image cap">
-                            </div>
+                            <h6>
+                                <a href="{{ post.get_absolute_url }}"
+                                    class="text-decoration-non text-dark">{{post.title}}</a>
+                            </h6>
+                            <span class="badge badge-pill badge-light float-right">
+                                <p>여기에 카드가 들어온다</p>
+                                {{ post.author.username }}
+                                &nbsp;
+                                &nbsp;
+                                {{ post.created_at }}
+                            </span>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                <!-- 대문에 최신 포스트 나타내기 -->
-                <div class="col-lg-5 mt-5">
-                    <h1 class="text-success">추천 코스</h1>
-                    <div class="card mt-1">
-                        <div class="card-body">
-                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                            <br>
-                            <br>
-                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                            <br>
-                            <br>
-                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-                <!-- 대문에 최신 포스트 나타내기 끝 -->
             </div>
         </div>
     </section>
+    <!-- 추천코스 영역 -->
 
     {% include 'single_pages/footer.html' %}
 
@@ -119,7 +148,8 @@
         crossorigin="anonymous"></script>
     <!-- 부트스트랩 자바스크립트 끝 -->
 
-    <!-- Map 자바스크립트 -->
+    <!-- 스와이퍼 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </body>
 
 </html>

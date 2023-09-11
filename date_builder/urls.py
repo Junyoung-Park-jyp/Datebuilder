@@ -18,23 +18,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from . import views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index, name='index'),
     path('nav/', views.main),
-    path('login',views.login),
     path('', include('allauth.urls')),
-    # path('main/restaurant', views.restaurant),
-    # path('main/cafe', views.cafe),
-    # path('main/play', views.play),
     path('markdownx/', include('markdownx.urls')),
+    path('common/', include('common.urls', namespace='common')),
     # path('searchbar/', ('single_pages.urls')),index
     path('single_pages/', include('single_pages.urls')),
     
 ]
-
+app_name = 'common'
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

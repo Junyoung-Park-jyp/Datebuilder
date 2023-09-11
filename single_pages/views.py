@@ -37,6 +37,7 @@ def landing(request):
             'recent_posts': recent_posts,
         }
     )
+
 # 포스트 연결하기 테스트
 
 def food(request):
@@ -53,6 +54,8 @@ def review(request):
 
 def date_course(request):
     return render(request, 'single_pages/date_course.html')
+<<<<<<< HEAD
+=======
 
 
 class CafeList(ListView):

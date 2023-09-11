@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+    'widget_tweaks',
+>>>>>>> 30a89a834a531effc72f6b719f8a63e70bebb3d5
     'single_pages',
     'blog',
     'crispy_forms',
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'markdownx',
     'allauth',
     'allauth.account',
+    'common.apps.CommonConfig', 
 ]
 
 MIDDLEWARE = [
@@ -138,3 +143,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'widget_tweaks',
+    
     'single_pages',
     'blog',
     'crispy_forms',
@@ -47,7 +47,11 @@ INSTALLED_APPS = [
     'markdownx',
     'allauth',
     'allauth.account',
+<<<<<<< HEAD
     'common.apps.CommonConfig', 
+=======
+  
+>>>>>>> c876e737dc90fa5393cd7d1bfe4065d1b5b9aadc
 ]
 
 MIDDLEWARE = [
@@ -65,7 +69,9 @@ ROOT_URLCONF = 'date_builder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

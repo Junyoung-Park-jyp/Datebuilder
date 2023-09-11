@@ -1,4 +1,5 @@
 {% load static %}
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,8 @@
 
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
 </head>
+=======
+>>>>>>> c876e737dc90fa5393cd7d1bfe4065d1b5b9aadc
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <div class="container navbar-dark nav-fill navbar-dark">
         <a class="navbar-brand" href="/">Dateing</a>
@@ -19,6 +22,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
+<<<<<<< HEAD
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
@@ -30,13 +34,62 @@
                 </li>
             </ul>
             <hr>
+=======
+                <li class="nav-item">
+                    <a class="nav-link" href="/single_pages/place/">PLACE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/single_pages/food/">FOOD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/single_pages/cafe/">CAFE</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        aria-expanded="false">
+                        MORE
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/single_pages/review/">찐리뷰</a>
+                        <a class="dropdown-item" href="/single_pages/date_course/">추천코스</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">할인쿠폰? 게시판?</a>
+                    </div>
+                </li>
+            </ul>
+>>>>>>> c876e737dc90fa5393cd7d1bfe4065d1b5b9aadc
         </div>
         <!-- Log In 버튼 -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link" href="{% url 'common:login' %}">Log In</a>
             </li>
         </ul>
         <!-- Log In 버튼 끝-->
     </div>
 </nav>
+=======
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+            </li>
+        </ul>
+        <!-- Log In 버튼 끝-->
+        <hr>
+    </div>
+</nav>
+<!-- 서치형 navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+    <div class="container navbar-dark nav-fill navbar-dark">
+        <a class="navbar-brand" href="/">Dateing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<!-- 네이게이션 바 만들기_부트스트랩 끝-->
+>>>>>>> c876e737dc90fa5393cd7d1bfe4065d1b5b9aadc

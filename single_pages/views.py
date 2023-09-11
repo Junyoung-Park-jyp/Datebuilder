@@ -36,4 +36,20 @@ def landing(request):
             'recent_posts': recent_posts,
         }
     )
+
 # 포스트 연결하기 테스트
+
+def food(request):
+    return render(request, 'single_pages/food.html')
+
+def cafe(request):
+    return render(request, 'single_pages/cafe.html')
+
+def place(request):
+    return render(request, 'single_pages/place.html')
+
+def review(request):
+    return render(request, 'single_pages/review.html')
+
+def date_course(request):
+    return render(request, 'single_pages/date_course.html')

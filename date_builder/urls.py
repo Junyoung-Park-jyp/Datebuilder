@@ -26,7 +26,13 @@ urlpatterns = [
     path('nav/', views.main),
     path('', include('allauth.urls')),
     path('markdownx/', include('markdownx.urls')),
+<<<<<<< HEAD
     path('common/', include('common.urls', namespace='common')),
+=======
+    # path('searchbar/', ('single_pages.urls')),index
+    path('single_pages/', include('single_pages.urls')),
+    
+>>>>>>> c876e737dc90fa5393cd7d1bfe4065d1b5b9aadc
 ]
 
 if settings.DEBUG:

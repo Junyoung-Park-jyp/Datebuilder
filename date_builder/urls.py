@@ -27,9 +27,11 @@ urlpatterns = [
     path('', include('allauth.urls')),
     path('markdownx/', include('markdownx.urls')),
     path('common/', include('common.urls', namespace='common')),
+    # path('searchbar/', ('single_pages.urls')),index
+    path('single_pages/', include('single_pages.urls')),
+    
 ]
-
+app_name = 'common'
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-app_name = 'common'
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

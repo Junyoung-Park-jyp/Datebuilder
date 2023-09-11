@@ -147,17 +147,61 @@ for (var i = 0, ii = markers.length; i < ii; i++) {
   naver.maps.Event.addListener(markers[i], "click", getClickHandler(i));
 }
 
-// 스와이퍼 JavaScript
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  spaceBetween: 30,
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+map.getPanes().floatPane.appendChild(menuLayer[0]);
+
+naver.maps.Event.addListener(map, "click", function (e) {
+  var marker = new naver.maps.Marker({
+    position: e.coord,
+    map: map,
+  });
+
+  markerList.push(marker);
 });
+
+naver.maps.Event.addListener(map, "keydown", function (e) {
+  var keyboardEvent = e.keyboardEvent,
+    keyCode = keyboardEvent.keyCode || keyboardEvent.which;
+
+  var ESC = 27;
+
+  if (keyCode === ESC) {
+    keyboardEvent.preventDefault();
+
+    for (var i = 0, ii = markerList.length; i < ii; i++) {
+      markerList[i].setMap(null);
+    }
+
+    markerList = [];
+
+    menuLayer.hide();
+  }
+});
+
+naver.maps.Event.addListener(map, "mousedown", function (e) {
+  menuLayer.hide();
+});
+
+naver.maps.Event.addListener(map, "rightclick", function (e) {
+  var coordHtml =
+    "Coord: " + "(우 클릭 지점 위/경도 좌표)" + "<br />" + "Point: " + e.point + "<br />" + "Offset: " + e.offset;
+
+  menuLayer
+    .show()
+    .css({
+      left: e.offset.x,
+      top: e.offset.y,
+    })
+    .html(coordHtml);
+
+  console.log("Coord: " + e.coord.toString());
+});
+
+var map = new naver.maps.Map("map", {
+  zoom: 5,
+  center: new naver.maps.LatLng(37.3614483, 127.1114883),
+});
+
+var markerList = [];
+var menuLayer = $(
+  '<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>'
+);

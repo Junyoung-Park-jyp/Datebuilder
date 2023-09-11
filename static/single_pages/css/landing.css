@@ -1,109 +1,30 @@
-<<<<<<< HEAD:single_pages/static/single_pages/css/landing.css
 /* 맵 카드 영역 */
-=======
-section {
-  margin-bottom: 150px;
-}
-.navbar {
-  background: #82d8d9;
-}
-.navbar2 {
-  background: #f1cc63;
-}
-.card {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-.box {
-  display: flex;
-  gap: 5px;
-}
-.box a {
-  background: url(http://placehold.it/250x250) no-repeat;
-  width: 250px;
-  height: 250px;
-  margin-top: 5px;
-}
-.sec_nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-}
-.sec_nav a {
-  font-size: 30px;
-  color: rgba(244, 202, 99, 0.6);
-}
-.section1 {
-  background: url(../images/cat-4542301_1920.jpg) no-repeat;
-  height: 1280px;
-  position: relative;
-  text-align: center;
-  padding: 30px;
-}
-.con1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 1000px;
-}
-.maincon h1 {
-  color: #8acb8d;
-}
-.maincon img {
-  border-radius: 50%;
-}
-.maincon p {
-  color: #8acb8d;
-  font-size: 1.5em;
-}
-.text p {
-  color: #8acb8d;
-  font-size: 3.5rem;
-}
-.section2 {
-  background: url(../images/cat-4542301_1920.jpg) no-repeat;
-  height: 1280px;
-}
->>>>>>> 7f3ae723c913f3476dac180d99b159642dccf7c6:static/single_pages/css/landing.css
 .map-info {
   position: absolute;
   left: 70%;
   margin-right: 0;
-  top: 17%;
   bottom: 14rem;
   z-index: 5;
   width: 33rem;
-  border-radius: 2rem 2rem 0.6rem 0.6rem;
+}
+.card-body {
+  background: #f5f5f5;
+  padding: 3px;
+  border-radius: 10px;
 }
 .card-info {
   width: 350px;
 }
 .card-img-top {
   width: 100%;
+  border-radius: 30px;
 }
-.info-option {
-  display: flex;
-  align-items: center;
-  height: 6.5rem;
-  padding: 0 2rem;
-  border-top: 0.1rem solid #dee3ef;
-  font-size: 1.1rem;
-}
-.option-title {
-  display: flex;
-  color: #bb4f59;
-  font-size: 1.8rem;
-}
-.card-info-text {
-  line-height: 1.4vh;
-}
-.card-text {
-  font-size: 1.6rem;
-  letter-spacing: -0.02em;
-  font-weight: 500;
+.card-info-text a {
+  line-height: 7vh;
 }
 .card-text li {
   display: flex;
+  align-items: center;
 }
 .card-text i {
   flex: 0 0 1.6rem;
@@ -112,15 +33,37 @@ section {
   color: #787878;
   text-align: center;
 }
+
+.info-option {
+  display: flex;
+  align-items: center;
+  height: 4.5rem;
+  font-size: 1.1rem;
+  padding: 1.2rem;
+  border-top: 1px solid #dee3ef;
+}
+.card-text {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+.option-title {
+  display: flex;
+  color: #bb4f59;
+  font-size: 1.5em;
+  white-space: nowrap;
+}
 .info-option-button {
   margin-left: auto;
 }
-.info-option-button img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-}
 
+.info-option-button a img {
+  max-width: 100%;
+  vertical-align: top;
+}
+.info-option-button a::after {
+  display: block;
+}
 /*  */
 .hum {
   background: url(https://blog.kakaocdn.net/dn/EUyI3/btqDPYEYgss/x3dY0uYvYR6dqEamgVP6rK/img.jpg) 0 0 no-repeat;
@@ -133,6 +76,11 @@ section {
   font-size: 3rem;
   color: #f5f5f5;
 }
+/* 스와이퍼 */
 .slider {
   background: #f1cc63;
+}
+.swiper {
+  width: 100%;
+  height: 300px;
 }

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post, Cafe
+from .models import Post, Cafe, Food
 from django.views.generic import *
 
 # 포스트 연결하기 테스트
@@ -40,8 +40,8 @@ def landing(request):
 
 # 포스트 연결하기 테스트
 
-def food(request):
-    return render(request, 'single_pages/food.html')
+# def food(request):
+#     return render(request, 'single_pages/food.html')
 
 # def cafe(request):
 #     return render(request, 'single_pages/cafe.html')
@@ -60,4 +60,10 @@ class CafeList(ListView):
     model = Cafe
     template_name = "single_pages/cafe.html"
     context_object_name = "cafes"
+    ordering = '-pk'
+
+class FoodList(ListView):
+    model = Food
+    template_name = "single_pages/food.html"
+    context_object_name = "foods"
     ordering = '-pk'

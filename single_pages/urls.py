@@ -10,6 +10,8 @@ urlpatterns = [
     path('review/', views.review),
     path('date_course/', views.date_course),
     path('cafe_detail/', views.cafe_detail),
+    path('food_detail/', views.food_detail),
+    path('place_detail/', views.place_detail),
 ]
 
 if settings.DEBUG:

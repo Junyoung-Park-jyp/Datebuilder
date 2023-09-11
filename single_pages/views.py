@@ -55,6 +55,12 @@ def date_course(request):
 def cafe_detail(request):
     return render(request, 'single_pages/cafe_detail.html')
 
+def food_detail(request):
+    return render(request, 'single_pages/food_detail.html')
+
+def place_detail(request):
+    return render(request, 'single_pages/place_detail.html')
+
 
 class CafeList(ListView):
     model = Cafe

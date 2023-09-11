@@ -59,3 +59,4 @@ class CafeList(ListView):
     model = Cafe
     template_name = "single_pages/cafe.html"
     context_object_name = "cafes"
+    ordering = '-pk'

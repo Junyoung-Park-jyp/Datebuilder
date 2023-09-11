@@ -48,8 +48,8 @@ class Cafe(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
 
-    head_image = models.ImageField(upload_to='single_pages/images/cafe/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/cafe/', blank=True)
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
+    file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
 
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
@@ -64,8 +64,24 @@ class Food(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
 
-    head_image = models.ImageField(upload_to='single_pages/images/cafe/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/cafe/', blank=True)
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
+    file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
+
+    create_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def get_content_markdown(self):
+      return markdown(self.content)
+    
+    def __str__(self):
+      return f'[{self.pk}] {self.subject}'
+    
+class Place(models.Model):
+    subject = models.CharField(max_length=40)
+    content = MarkdownxField()
+
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
+    file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
 
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)

@@ -11,6 +11,7 @@ class TagAdmin(admin.ModelAdmin):
 admin.site.register(Restaurant,MarkdownxModelAdmin )
 admin.site.register(Cafe, MarkdownxModelAdmin )
 admin.site.register(Food, MarkdownxModelAdmin )
+admin.site.register(Place, MarkdownxModelAdmin )
 admin.site.register(Play, MarkdownxModelAdmin )
 # 포스트 연결 테스트
 admin.site.register(Post, MarkdownxModelAdmin )

@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,26 +28,103 @@
                 </div>
             </div>
         </header>
-        {% for cafe in cafes %}
+
         <!-- Page Content-->
-        <section class="pt-4">
-            <div class="container px-lg-5">
-                <!-- Page Features-->
-                <div class="row gx-lg-5">
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></div>
-                                    <h2 class="fs-4 fw-bold"><img class="card-img-top" src="{{ cafe.head_image.url }}" alt=""></h2>
-                                    <p class="mb-0">{{ cafe.subject }}</p>
+        <div class="li-section">
+            <ul class="content-wrap">
+                {% for cafe in cafes %}
+                <li>
+                    <figure><img src="{{ cafe.head_image.url }}" alt=""></figure>
+                    <dl>
+                        <dt>
+                            {{ cafe.subject }}
+                        </dt>
+                        <dd>
+                            {{ cafe.content }}
+                        </dd>
+                    </dl>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Pagination-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+            {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo; 이전 </span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">다음 &raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </nav>
+
+
+        <!-- Pagination 의철씨 버전-->
+        <!-- <ul class="pagination">
+            {% if cafe.has_provious %}
+                <li><a href="?page=1">처음</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">이전</a></li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="current">{{ num }}</li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {%if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">다음</a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}"></a></li>
+            {% endif %}
+        </ul> -->
+
+                <!-- <section class="pt-4">
+                    <div class="container px-lg-5">
+                        <div class="row gx-lg-5">
+                            <div class="col-lg-6 col-xxl-4 mb-5">
+                                <div class="card bg-light border-0 h-100">
+                                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></div>
+                                            <h2 class="fs-4 fw-bold"><img class="card-img-top" src="{{ cafe.head_image.url }}" alt=""></h2>
+                                            <p class="mb-0">{{ cafe.subject }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
-            <!-- Pagination-->
-            <nav aria-label="Pagination">
+                </section>-->
+
+            <!-- <nav aria-label="Pagination">
                 <hr class="my-0" />
                 <ul class="pagination justify-content-center my-4">
                     <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
@@ -58,7 +136,7 @@
                     <li class="page-item"><a class="page-link" href="#!">Older</a></li>
                 </ul>
             </nav>
-        </section>
+        </section> -->
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>

@@ -4,11 +4,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('food/', views.food),
-    path('cafe/', views.CafeList.as_view()),
-    path('place/', views.place),
     path('review/', views.review),
     path('date_course/', views.date_course),
+    # path('food/<int:food_id>/', views.food_detail, name='food_detail'),
+    # path('cafe/<int:cafe_id>/', views.cafe_detail, name='cafe_detail'),
+    # path('place/<int:place_id>/', views.place_detail, name='place_detail'),
+    path('createcourse/', views.create_course, name='create_course'),
+    path('cafe/', views.CafeList.as_view()),
+    path('food/', views.FoodList.as_view()),
+    path('place/', views.PlaceList.as_view()),
 ]
 
 if settings.DEBUG:

@@ -23,11 +23,10 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , views.index, name='index'),
-    path('nav/', views.main),
+    path('main/', views.main),
     path('', include('allauth.urls')),
     path('markdownx/', include('markdownx.urls')),
     path('common/', include('common.urls', namespace='common')),
-    # path('searchbar/', ('single_pages.urls')),index
     path('single_pages/', include('single_pages.urls')),
     
 ]

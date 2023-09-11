@@ -52,6 +52,9 @@ def review(request):
 def date_course(request):
     return render(request, 'single_pages/date_course.html')
 
+def cafe_detail(request):
+    return render(request, 'single_pages/cafe_detail.html')
+
 
 class CafeList(ListView):
     model = Cafe

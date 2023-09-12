@@ -1,0 +1,45 @@
+/* .main-bg{
+    width: 100%;
+    height: 250px;
+    background: red;
+}
+
+.content-wrap{
+    background: yellowgreen;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container.px-lg-5{
+    background: gray;
+    position: relative;
+
+} */
+
+.li-section{
+    margin: 150px 100px 200px;
+}
+
+.content-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    margin: -3.5rem -1.6rem;
+    gap: 10px;
+}
+
+.content-wrap li {
+    list-style: none;
+}
+.content-wrap li figure{
+    overflow: hidden;
+    width: 200px;
+    height: 100%;
+}
+
+
+.content-wrap li figure img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+

@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.http import JsonResponse
 from django.views.generic import *
 from django.http import JsonResponse
 import json
+=======
+from django.shortcuts import render
+from .models import Post, Cafe, Food, Place
+from django.views.generic import *
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+>>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
 
 # 포스트 연결하기 테스트
 from single_pages.models import Post
@@ -41,10 +48,25 @@ def landing(request):
         }
     )
 
+<<<<<<< HEAD
+=======
+# 포스트 연결하기 테스트
+
+# def food(request):
+#     return render(request, 'single_pages/food.html')
+
+# def cafe(request):
+#     return render(request, 'single_pages/cafe.html')
+
+# def place(request):
+#     return render(request, 'single_pages/place.html')
+
+>>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
 def review(request):
     return render(request, 'build/review.html')
 
 def date_course(request):
+<<<<<<< HEAD
     return render(request, 'build/date_course.html')
 
 def cafe_detail(request):
@@ -55,22 +77,57 @@ def food_detail(request):
 
 def place_detail(request):
     return render(request, 'single_pages/place_detail.html')
+=======
+    return render(request, 'single_pages/date_course.html')
+>>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
 
 
 class CafeList(ListView):
     model = Cafe
     template_name = "single_pages/cafe.html"
     context_object_name = "cafes"
+<<<<<<< HEAD
+=======
+    ordering = '-pk'
+    paginate_by = 4
+    # paginator = Paginator(cafe,9)
+                          
+    # try:
+    #     page_obj = paginator.page(page)
+    # except PageNotAnInteger:
+    #     page = 1
+    #     page_obj = paginator.page(page)
+    # except EmptyPage:
+    #     page = paginator.num_pages
+    #     page_obj = paginator.page(page)
+
+    # leftIndex = (int(page) - 9)
+    # if leftIndex < 1:
+    #     leftIndex = 1
+
+    # rightIndex = (int(page) + 9)
+
+    # if rightIndex > paginator.num_pages:
+    #     rightIndex = paginator.num_pages
+
+    # custom_range = range(leftIndex, rightIndex+1)
+
+>>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
 
 class FoodList(ListView):
     model = Food
     template_name = "single_pages/food.html"
     context_object_name = "foods"
+<<<<<<< HEAD
+=======
+    ordering = '-pk'
+>>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
 
 class PlaceList(ListView):
     model = Place
     template_name = "single_pages/place.html"
     context_object_name = "places"
+<<<<<<< HEAD
 
 # def create_course(request):
 #     if request.method == 'GET':
@@ -138,3 +195,6 @@ def create_course(request):
         return JsonResponse(response_data)
 
     return render(request, 'single_pages/create_course.html')
+=======
+    ordering = '-pk'
+>>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c

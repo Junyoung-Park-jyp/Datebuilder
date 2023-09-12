@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,6 +11,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <script defer src="{% static 'single_pages/js/course.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}" media="screen">
+        <link rel="stylesheet" href="{% static 'single_pages/css/cafe_style.css' %}">
     </head>
     {% include 'single_pages/navbar.html' %}
     {% block content %}
@@ -18,6 +20,7 @@
         <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <img class="card-img-top main-bg" src="{% static 'images/cafe1.jpg' %}" alt="random_image">
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">Coffee & Dessert</h1>
                         <p class="fs-4">아무 카페나 가지마!</p>
@@ -26,7 +29,7 @@
                 </div>
             </div>
         </header>
-        {% for cafe in cafes %}
+
         <!-- Page Content-->
         <section class="pt-4">
             <div class="container px-lg-5">
@@ -44,50 +47,96 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
-            <!-- Pagination-->
-            <nav aria-label="Pagination">
-                <hr class="my-0" />
-                <ul class="pagination justify-content-center my-4">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+        <div class="li-section">
+            <ul class="content-wrap">
+                {% for cafe in cafes %}
+                <li><a href="{{ cafe.get_absolute_url }}">
+                    <figure><img src="{{ cafe.head_image.url }}" alt=""></figure>
+                    <dl>
+                        <dt>
+                            {{ cafe.subject }}
+                        </dt>
+                        <dd>
+                            {{ cafe.content }}
+                        </dd>
+                    </dl>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Pagination-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+                {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo; 이전 </span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-hidden="true">&raquo;</span>
+                    </li>
+                    {% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">다음 &raquo;</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-hidden="true">&raquo;</span>
+                    </li>
+                    {% endif %}
                 </ul>
+                {% endif %}
             </nav>
         </section>
         {% for cafe in cafes %}
         <div class="modal fade" id="cafe{{cafe.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{cafe.pk}}ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="row">
-                            <img class="card-img-top" src="{{ cafe.head_image.url }}" alt="Card image cap">
-                            <div class="col-lg-12">
-                                <a href="#" class="shop-name">{{cafe.subject}} &rarr;</a>
-                                <p>{{cafe.content}}</p>
-                                <ul class="card-text">
-                                    <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
-                                    <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
-                                    </li>
-                                    <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
-                                </ul>
+            <form method="post" action="/single_pages/cafe/{{cafe.pk}}">
+                {% csrf_token %}
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row">
+                                <img class="card-img-top" src="{{ cafe.head_image.url }}" alt="Card image cap">
+                                <div class="col-lg-12">
+                                    <a href="#" class="shop-name">{{cafe.subject}} &rarr;</a>
+                                    <p>{{cafe.content}}</p>
+                                    <ul class="card-text">
+                                        <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
+                                        <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
+                                        </li>
+                                        <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="info-option">
-                            <div class="option-title">
-                                <i class="fa-solid fa-map"></i>
-                                <span class="text">길찾기</span>
+                        <div class="modal-footer">
+                            <div class="info-option">
+                                <div class="option-title">
+                                    <i class="fa-solid fa-map"></i>
+                                    <span class="text">지도 보기</span>
+                                    <input type="submit" value="자세히보기">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         {% endfor %}
         <!-- Footer-->

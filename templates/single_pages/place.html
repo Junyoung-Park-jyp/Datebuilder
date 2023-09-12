@@ -16,7 +16,7 @@
     {% block content %}
     <body>
         <!-- Header-->
-        <header class="py-5">
+        <!-- <header class="py-5">
             <div class="container px-lg-5" data-toggle="modal" data-target="#cafe{{cafe.pk}}">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <img class="card-img-top main-bg" src="{% static 'images/place3.jpg' %}" alt="음식점">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> -->
         {% for place in places %}
         <!-- Page Content-->
         <section class="pt-4">
@@ -42,6 +42,7 @@
                                     <p class="mb-0">{{ place.subject }}</p>
                             </div>
                         </div>
+                        <a href="{% url 'createcourse' %}" class="btn btn-primary">나만의 코스 완성하기</a>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ urlpatterns = [
     path('review/', views.review),
     path('date_course/', views.date_course),
 
-    path('createcourse/', views.create_course, name='create_course'),
+    path('createcourse/', views.create_course, name='createcourse'),
     path('cafe/', views.CafeList.as_view(), name='pickcafe'),
     path('food/', views.FoodList.as_view(), name='pickfood'),
     path('place/', views.PlaceList.as_view(), name='pickplace'),

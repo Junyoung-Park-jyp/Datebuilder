@@ -29,33 +29,18 @@
                         <h5 class="card-title">{{place.subject}}</h5>
                         <p class="card-text">{{place.content}}</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{% url 'pickplace' %}" class="btn btn-primary">뒤로가기</a>
-                        <a href="{% url 'pickplace' %}" class="btn btn-primary pickcourse">선택하기</a>
+                            <a href="{% url 'pickplace' %}" class="btn btn-primary">뒤로가기</a>
+                            <form method="post" action="{% url 'create_course' %}">
+                                {% csrf_token %}
+                                <!-- 선택한 카드의 데이터를 JSON 형식으로 가공하여 숨겨진 필드에 추가 -->
+                                <input type="hidden" name="selected_data" value="{{ selected_data }}">
+                                <button type="submit" class="btn btn-primary pickcourse">선택하기</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-
-        {% for place in places %}
-        <!-- Page Content-->
-        <section class="pt-4">
-            <div class="container px-lg-5">
-                <!-- Page Features-->
-                <div class="row gx-lg-5">
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></div>
-                                    <h2 class="fs-4 fw-bold"><img class="card-img-top" src="{{ place.head_image.url }}" alt=""></h2>
-                                    <p class="mb-0">{{ place.subject }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>

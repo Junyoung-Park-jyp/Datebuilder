@@ -16,7 +16,7 @@
     {% block content %}
     <body>
         <!-- Header-->
-        <header class="py-5">
+        <!-- <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <img class="card-img-top main-bg" src="{% static 'images/food1.webp' %}" alt="음식점">
@@ -27,13 +27,14 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> -->
+        <div class="row">
         {% for food in foods %}
         <!-- Page Content-->
-        <section class="pt-4">
-            <div class="container px-lg-5">
+        <!-- <section class="pt-4"> -->
+            <div class="card col-lg-4">
                 <!-- Page Features-->
-                <div class="row gx-lg-5" data-toggle="modal" data-target="#food{{food.pk}}" >
+                <div class="card-body" data-toggle="modal" data-target="#food{{food.pk}}" >
                     <div class="col-lg-6 col-xxl-4 mb-5">
                         <div class="card bg-light border-0 h-100" data-data-id="{{ food.pk }}">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
@@ -42,12 +43,13 @@
                                     <p class="mb-0">{{ food.subject }}</p>
                             </div>
                         </div>
+                        <a href="{% url 'pickfood' %}" class="btn btn-primary">다음 장소 선택하기</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
             <!-- Pagination-->
-            <nav aria-label="Pagination">
+            <!-- <nav aria-label="Pagination">
                 <hr class="my-0" />
                 <ul class="pagination justify-content-center my-4">
                     <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
@@ -59,8 +61,9 @@
                     <li class="page-item"><a class="page-link" href="#!">Older</a></li>
                 </ul>
             </nav>
-        </section>
+        </section> -->
         {% for food in foods %}
+        </div>
         <div class="modal fade" id="food{{food.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{food.pk}}ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">

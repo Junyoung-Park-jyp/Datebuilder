@@ -6,6 +6,7 @@ from .models import *
 #admin페이지에 카테고리 추가하기
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
+    
 class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 

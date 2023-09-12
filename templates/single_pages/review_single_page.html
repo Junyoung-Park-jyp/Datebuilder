@@ -34,7 +34,11 @@
                         </header>
                         <!-- Preview image figure-->
                         <figure class="mb-4">
-                            <img class="img-fluid rounded" src="{{ review.head_image.url }}" alt=""/>
+                            {% if review.head_image %}
+                            <img class="img-fluid rounded" src="{{ review.head_image.url }}" alt="{{review}} head image"/>
+                            {% endif %}
+
+                            <!-- <img class="card-img-top" src="{{ review.head_image.url }}" alt="{{cafe}} head image" /> -->
                             <!-- <img class="card-img-top" src="{{ review.head_image.url }}" alt="{{cafe}} head image" /> -->
                         </figure>
                         <!-- Post content-->

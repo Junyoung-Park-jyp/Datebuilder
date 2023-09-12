@@ -87,18 +87,21 @@ class FoodList(ListView):
     template_name = "single_pages/food.html"
     context_object_name = "foods"
     ordering = '-pk'
+    paginate_by = 4
 
 class PlaceList(ListView):
     model = Place
     template_name = "single_pages/place.html"
     context_object_name = "places"
     ordering = '-pk'
+    paginate_by = 4
 
 class ReviewList(ListView):
     model = Review
     template_name = "single_pages/review.html"
     context_object_name = "reviews"
     ordering = '-pk'
+    paginate_by = 4
 
 class ReviewSinglePage(DetailView):
     model = Review

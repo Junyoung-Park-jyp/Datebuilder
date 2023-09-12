@@ -79,10 +79,10 @@ class Food(models.Model):
 class Place(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-
     head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
     file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
-
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    tags = models.ManyToManyField(Tag, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -128,6 +128,7 @@ class Place(models.Model):
     def __str__(self):
         return f'[{self.pk}] {self.subject}'
     # 포스트 연결 테스트 영역
+
 class Post(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()

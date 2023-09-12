@@ -33,7 +33,7 @@
         <div class="li-section">
             <ul class="content-wrap">
                 {% for cafe in cafes %}
-                <li>
+                <li><a href="{{ cafe.get_absolute_url }}">
                     <figure><img src="{{ cafe.head_image.url }}" alt=""></figure>
                     <dl>
                         <dt>
@@ -43,6 +43,7 @@
                             {{ cafe.content }}
                         </dd>
                     </dl>
+                    </a>
                 </li>
                 {% endfor %}
             </ul>

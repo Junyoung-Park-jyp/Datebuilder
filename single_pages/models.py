@@ -60,6 +60,9 @@ class Cafe(models.Model):
     def __str__(self):
       return f'[{self.pk}] {self.subject}'
     
+    def get_absolute_url(self):
+       return f'/cafe/{self.pk}'
+    
 class Food(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()

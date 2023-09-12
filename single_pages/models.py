@@ -32,74 +32,67 @@ class Tag(models.Model):
     
 
 #Category, Tags 사용 예시
-class Restaurant(models.Model):
-    subject = models.CharField(max_length=40)
-    content = MarkdownxField()
-    create_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
-    tags = models.ManyToManyField(Tag,blank=True)
-    def get_content_markdown(self):
-        return markdown(self.content)
-    
+
+class Course(models.Model):
+    subject = models.CharField(max_length=200)  # 제목 또는 이름
+    content = models.TextField()  # 설명 또는 주소
+
     def __str__(self):
-        return f'[{self.pk}] {self.subject}'
+        return self.subject
+
     
 class Cafe(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-
-    head_image = models.ImageField(upload_to='single_pages/images/cafe/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/cafe/', blank=True)
-
+    head_image = models.ImageField(upload_to='single_pages/images/cafe/', null=True, blank=True)
+    file_upload = models.FileField(upload_to='single_pages/files/cafe/', null=True, blank=True)
+    # course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    tags = models.ManyToManyField(Tag, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
+    
 
     def get_content_markdown(self):
         return markdown(self.content)
-    
+
     def __str__(self):
         return f'[{self.pk}] {self.subject}'
 
 class Food(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-
-    head_image = models.ImageField(upload_to='single_pages/images/food/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/food/', blank=True)
-
+    head_image = models.ImageField(upload_to='single_pages/images/food/', null=True, blank=True)
+    file_upload = models.FileField(upload_to='single_pages/files/food/', null=True, blank=True)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    tags = models.ManyToManyField(Tag, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
+    
 
     def get_content_markdown(self):
         return markdown(self.content)
-    
+
     def __str__(self):
         return f'[{self.pk}] {self.subject}'
+
     
 class Place(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-
-    head_image = models.ImageField(upload_to='single_pages/images/place/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/place/', blank=True)
-
+    head_image = models.ImageField(upload_to='single_pages/images/place/', null=True, blank=True)
+    file_upload = models.FileField(upload_to='single_pages/files/place', null=True, blank=True)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    tags = models.ManyToManyField(Tag, blank=True)
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
 
     def get_content_markdown(self):
         return markdown(self.content)
-    
-    def __str__(self):
-        return f'[{self.pk}] {self.subject}'
-    
-class Play(models.Model):
-    subject = models.CharField(max_length=40)
-    content = MarkdownxField()
-    create_date = models.DateTimeField(auto_now_add=True)
 
-    def get_content_markdown(self):
-        return markdown(self.content)
-    
     def __str__(self):
         return f'[{self.pk}] {self.subject}'
     # 포스트 연결 테스트 영역
@@ -114,5 +107,4 @@ class Post(models.Model):
     def __str__(self):
         return f'[{self.pk}]{self.title}'
     # 포스트 연결 테스트 영역
-
 

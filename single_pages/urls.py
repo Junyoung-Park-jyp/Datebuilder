@@ -13,6 +13,9 @@ urlpatterns = [
     path('cafe/', views.CafeList.as_view(), name='pickcafe'),
     path('food/', views.FoodList.as_view(), name='pickfood'),
     path('place/', views.PlaceList.as_view(), name='pickplace'),
+    path('cafe_detail/<int:pk>/', views.cafe_detail, name='cafe_detail'),
+    path('food_detail/', views.food_detail),
+    path('place_detail/', views.place_detail),
 ]
 
 if settings.DEBUG:

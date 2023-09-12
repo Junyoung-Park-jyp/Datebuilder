@@ -1,0 +1,48 @@
+.sub_visual{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sub_visual .sub_title_box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    text-shadow: 1px 1px black;
+    text-align: center;
+
+    background-color: red;
+}
+.sub_visual .sub_title_box h2{
+    font-size: 3rem;
+}
+.sub_visual .sub_map{
+    border: 1px solid #000;
+    height: 250px;
+}
+.sub_visual .sub_sharing{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-end;
+}
+.sub_visual .sub_sharing ul li{
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+}
+.sub_visual .sub_map{
+    max-width: 30rem;
+}
+
+.hide{
+    display: none;
+}
+.w100{
+    width: 100%;
+}

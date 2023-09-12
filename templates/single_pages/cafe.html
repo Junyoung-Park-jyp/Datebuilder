@@ -2,91 +2,83 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>cafe page</title>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <script defer src="{% static 'single_pages/js/course.js' %}"></script>
-        <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}" media="screen">
-        <link rel="stylesheet" href="{% static 'single_pages/css/cafe_style.css' %}">
-    </head>
-    {% include 'single_pages/navbar.html' %}
-    {% block content %}
-    <body>
-        <!-- Header-->
-        <header class="py-5">
-            <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                    <img class="card-img-top main-bg" src="{% static 'images/cafe1.jpg' %}" alt="random_image">
-                    <div class="m-4 m-lg-5">
-                        <h1 class="display-5 fw-bold">Coffee & Dessert</h1>
-                        <p class="fs-4">아무 카페나 가지마!</p>
-                        <a class="btn btn-primary btn-lg" href="{% url 'cafe' pk=pk %}">예약하기</a>
-                    </div>
-                </div>
-            </div>
-        </header>
 
-        <!-- Page Content-->
-        <section class="pt-4">
-            <div class="container px-lg-5">
-                <!-- Page Features-->
-                <div class="row gx-lg-5" data-toggle="modal" data-target="#cafe{{cafe.pk}}">
-                    <div class="col-lg-6 col-xxl-4 mb-5"">
-                        <div class="card bg-light border-0 h-100" data-data-id="{{ cafe.pk }}">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></div>
-                                    <h2 class="fs-4 fw-bold"><img class="card-img-top" src="{{ cafe.head_image.url }}" alt=""></h2>
-                                    <p class="mb-0">{{ cafe.subject }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>cafe page</title>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <script defer src="{% static 'single_pages/js/course.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}"
+        media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/cafe_style.css' %}">
+</head>
+{% include 'single_pages/navbar.html' %}
+{% block content %}
+
+<body>
+    <!-- Header-->
+    <header class="py-5">
+        <div class="container px-lg-5">
+            <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                <img class="card-img-top main-bg" src="{% static 'images/cafe1.jpg' %}" alt="random_image">
+                <div class="m-4 m-lg-5">
+                    <h1 class="display-5 fw-bold">Coffee & Dessert</h1>
+                    <p class="fs-4">아무 카페나 가지마!</p>
+                    <a class="btn btn-primary btn-lg" href="{% url 'pickcafe'}">예약하기</a>
                 </div>
             </div>
-        <div class="li-section">
-            <ul class="content-wrap">
-                {% for cafe in cafes %}
-                <li><a href="{{ cafe.get_absolute_url }}">
-                    <figure><img src="{{ cafe.head_image.url }}" alt=""></figure>
-                    <dl>
-                        <dt>
-                            {{ cafe.subject }}
-                        </dt>
-                        <dd>
-                            {{ cafe.content }}
-                        </dd>
-                    </dl>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
         </div>
-        <!-- Pagination-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-                {% if is_paginated %}
-                <ul class="pagination">
-                    {% if page_obj.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo; 이전 </span>
+    </header>
+
+    <!-- Page Content-->
+    <section class="pt-4">
+        <div class="container px-lg-5">
+            <!-- Page Features-->
+            <div class="li-section mx-2">
+                <ul class="content-wrap justify-content-between">
+                    {% for cafe in cafes %}
+                    <li><a href="{{ cafe.get_absolute_url }}">
+                            <figure><img src="{{ cafe.head_image.url }}" alt=""></figure>
+                            <dl>
+                                <dt>
+                                    {{ cafe.subject }}
+                                </dt>
+                                <dd>
+                                    {{ cafe.content }}
+                                </dd>
+                            </dl>
                         </a>
                     </li>
-                    {% else %}
-                    <li class="page-item disabled">
-                        <span class="page-link" aria-hidden="true">&raquo;</span>
-                    </li>
-                    {% endif %}
-                    {% for num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == num %}
-                    <li class="page-item active" aria-current="page">
-                        <span class="page-link">{{ num }}</span>
-                    </li>
-                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pagination-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+            {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo; 이전 </span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <li class="page-item"><a
+                        class="page-link" href="?page={{ num }}">{{ num }}</a></li>
                     {% endif %}
                     {% endfor %}
                     {% if page_obj.has_next %}
@@ -100,60 +92,64 @@
                         <span class="page-link" aria-hidden="true">&raquo;</span>
                     </li>
                     {% endif %}
-                </ul>
-                {% endif %}
-            </nav>
-        </section>
-        {% for cafe in cafes %}
-        <div class="modal fade" id="cafe{{cafe.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{cafe.pk}}ModalLabel" aria-hidden="true">
-            <form method="post" action="/single_pages/cafe/{{cafe.pk}}">
-                {% csrf_token %}
-                <div class="modal-dialog modal-md" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="row">
-                                <img class="card-img-top" src="{{ cafe.head_image.url }}" alt="Card image cap">
-                                <div class="col-lg-12">
-                                    <a href="#" class="shop-name">{{cafe.subject}} &rarr;</a>
-                                    <p>{{cafe.content}}</p>
-                                    <ul class="card-text">
-                                        <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
-                                        <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
-                                        </li>
-                                        <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
-                                    </ul>
-                                </div>
+            </ul>
+            {% endif %}
+        </nav>
+    </section>
+    {% for cafe in cafes %}
+    <div class="modal fade" id="cafe{{cafe.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{cafe.pk}}ModalLabel"
+        aria-hidden="true">
+        <form method="post" action="/single_pages/cafe/{{cafe.pk}}">
+            {% csrf_token %}
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <img class="card-img-top" src="{{ cafe.head_image.url }}" alt="Card image cap">
+                            <div class="col-lg-12">
+                                <a href="#" class="shop-name">{{cafe.subject}} &rarr;</a>
+                                <p>{{cafe.content}}</p>
+                                <ul class="card-text">
+                                    <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
+                                    <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
+                                    </li>
+                                    <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <div class="info-option">
-                                <div class="option-title">
-                                    <i class="fa-solid fa-map"></i>
-                                    <span class="text">지도 보기</span>
-                                    <input type="submit" value="자세히보기">
-                                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="info-option">
+                            <div class="option-title">
+                                <i class="fa-solid fa-map"></i>
+                                <span class="text">지도 보기</span>
+                                <input type="submit" value="자세히보기">
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
+    </div>
+    {% endfor %}
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
         </div>
-        {% endfor %}
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
+    </footer>
+    <!-- Bootstrap core JS-->
 
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-            crossorigin="anonymous"></script>
-    </body>
-    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+</body>
+{% endblock %}
+
 </html>

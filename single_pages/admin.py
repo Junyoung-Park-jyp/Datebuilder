@@ -14,13 +14,7 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ('subject', 'content')
 admin.site.register(Food,MarkdownxModelAdmin )
 admin.site.register(Cafe, MarkdownxModelAdmin )
-<<<<<<< HEAD
 admin.site.register(Place, MarkdownxModelAdmin )
-=======
-admin.site.register(Food, MarkdownxModelAdmin )
-admin.site.register(Place, MarkdownxModelAdmin )
-admin.site.register(Play, MarkdownxModelAdmin )
->>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
 # 포스트 연결 테스트
 admin.site.register(Post, MarkdownxModelAdmin )
 #admin페이지에 카테고리, Tags 추가하기

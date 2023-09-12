@@ -6,16 +6,14 @@ from django.conf import settings
 urlpatterns = [
     path('review/', views.review),
     path('date_course/', views.date_course),
-    # path('food/<int:food_id>/', views.food_detail, name='food_detail'),
-    # path('cafe/<int:cafe_id>/', views.cafe_detail, name='cafe_detail'),
-    # path('place/<int:place_id>/', views.place_detail, name='place_detail'),
+
     path('createcourse/', views.create_course, name='create_course'),
     path('cafe/', views.CafeList.as_view(), name='pickcafe'),
     path('food/', views.FoodList.as_view(), name='pickfood'),
     path('place/', views.PlaceList.as_view(), name='pickplace'),
-    path('cafe_detail/<int:pk>/', views.cafe_detail, name='cafe_detail'),
-    path('food_detail/', views.food_detail),
-    path('place_detail/', views.place_detail),
+    path('cafe/<int:cafe_id>/', views.CafeDetail.as_view(), name='cafe_detail'),
+    path('food/<int:food_id>/', views.FoodDetail.as_view(), name='food_detail'),
+    path('place/<int:place_id>/', views.PlaceDetail.as_view(), name='place_detail'),
 ]
 
 if settings.DEBUG:

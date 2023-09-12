@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -62,15 +62,14 @@
         </section>
         {% for place in places %}
         <div class="modal fade" id="place{{place.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{place.pk}}ModalLabel" aria-hidden="true">
-            <form method="post" action="/single_pages/place/{{place.pk}}">
-                {% csrf_token %}
+            
                 <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="row">
                                 <img class="card-img-top" src="{{ place.head_image.url }}" alt="Card image cap">
                                 <div class="col-lg-12">
-                                    <a href="#" class="shop-name">{{place.subject}} &rarr;</a>
+                                    <h4>{{place.subject}}</h4>
                                     <p>{{place.content}}</p>
                                     <ul class="card-text">
                                         <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
@@ -86,13 +85,13 @@
                                 <div class="option-title">
                                     <i class="fa-solid fa-map"></i>
                                     <span class="text">지도 보기</span>
-                                    <input type="submit" value="자세히보기">
+                                    <a href="{% url 'place_detail' place.pk %}" class="btn btn-primary">상세보기</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+         
         </div>
         {% endfor %}
         <!-- Footer-->

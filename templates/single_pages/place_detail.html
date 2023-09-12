@@ -1,13 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>food page</title>
+        <title>{{place.subject}} 더보기</title>
         <!-- Core theme CSS (includes Bootstrap)-->
+        <script defer src="{% static 'single_pages/js/course.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}" media="screen">
     </head>
     {% include 'single_pages/navbar.html' %}
@@ -19,19 +20,24 @@
                 <div class="card mb-3">
                     <img src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">가게이름</h5>
-                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam harum sed enim, debitis voluptatum tempore quaerat consequatur perspiciatis quisquam porro. Tempora culpa porro ullam quidem, quaerat reiciendis aliquid aliquam tempore at dolore, repellat adipisci ipsum fugit nobis esse ex illum deserunt rerum! Quam corporis maxime ipsum! Porro error temporibus distinctio quidem, tenetur illo dolores dolorem, id enim obcaecati illum eius voluptate quibusdam corporis? Atque quibusdam assumenda facere quo architecto error quae quaerat illo vel veritatis reiciendis, dolores rerum eos qui, ex molestiae sequi soluta! Perferendis ea voluptatibus doloribus optio itaque. Amet et quisquam provident fugiat inventore consectetur voluptates optio officiis velit beatae, impedit quam quaerat odit facilis modi nihil nemo saepe architecto incidunt? Enim ea rem ex quod unde repellendus. Iure quidem consequatur mollitia voluptatibus magnam sunt adipisci eum laborum totam? Voluptatum minus repudiandae quisquam deserunt minima deleniti saepe, nesciunt nobis alias esse reprehenderit praesentium maxime delectus a laboriosam animi earum suscipit molestias odit? Nulla, dolore impedit voluptatum fugit laudantium deleniti quia natus necessitatibus quae ducimus facere vitae omnis neque perspiciatis molestiae voluptates optio, corrupti porro rerum alias officiis corporis unde ratione. Dolore esse minima, assumenda quaerat id iure vero ipsa, tenetur, rem quae modi commodi sequi enim incidunt nesciunt aperiam cum nulla facilis eaque? Temporibus non, laboriosam aliquid, eum ullam ex a sunt, soluta consequuntur rerum quidem placeat sequi! Non, minus eligendi et assumenda id cumque debitis natus error aperiam eos in consequatur corrupti aliquam harum veniam soluta. Eius earum inventore iure dolorum numquam labore, doloribus dolorem! Inventore nostrum aspernatur nam ullam, quam eveniet incidunt assumenda saepe iste dignissimos cupiditate mollitia suscipit impedit vel eaque explicabo? Deserunt numquam corporis magnam earum, ex ipsum maiores, molestiae alias exercitationem blanditiis nesciunt labore, voluptatibus fugiat molestias nemo quidem quia optio minus soluta temporibus aperiam minima doloremque. Ea voluptatum debitis omnis aspernatur. Tempora quidem quos cumque doloribus tenetur temporibus dolores eum, dolorum in aspernatur deleniti iure laboriosam reprehenderit incidunt illum, excepturi accusamus at, officia architecto consequatur deserunt ducimus obcaecati magni! Rem sapiente dignissimos similique architecto nobis provident in eligendi hic, perspiciatis adipisci voluptatibus asperiores fugiat error quis laudantium fuga tempore, velit magnam, explicabo aliquam. Nobis ducimus illo dolorum voluptatibus non in odit reiciendis voluptate dolores, sint asperiores tenetur cum ea animi, soluta earum libero commodi neque accusantium exercitationem repudiandae blanditiis. Deleniti excepturi ad iusto quod id tenetur, voluptatum voluptates asperiores ea error ducimus, maxime corporis veniam deserunt distinctio ex soluta. Quis consectetur, voluptatibus fugiat tempora corrupti ut excepturi aut sequi asperiores cum nisi, quidem quae blanditiis quibusdam odit expedita! Laudantium quasi unde dolorum animi aliquid sequi provident consequuntur aliquam itaque est excepturi, asperiores dicta ipsum, quibusdam ab dignissimos quia voluptate facilis obcaecati eum aspernatur. Odit vitae nobis rem quasi perspiciatis asperiores. Possimus culpa animi numquam! Porro ea debitis, dolore unde ex aliquam vitae, explicabo mollitia dignissimos numquam obcaecati accusantium inventore asperiores commodi in? Velit consectetur laboriosam saepe odio molestiae eaque iure non obcaecati dicta, ullam veniam harum nihil debitis quis rerum voluptatum quos minima in quia natus. Aspernatur molestiae autem harum perferendis. Exercitationem.</p>
+                        {% if place.tags.exists %}
+                        <i class="fas fa-tags"></i>
+                        {% for tag in post.tags.all %}
+                        <span class="badge badge-pill badge-light">{{ tag }}</span></a>
+                        {% endfor %}
+                        {% endif %}
+                        <h5 class="card-title">{{place.subject}}</h5>
+                        <p class="card-text">{{place.content}}</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="button">뒤로가기</button>
-                        <button class="btn btn-primary" type="button">예약하기</button>
+                        <a href="{% url 'pickplace' %}" class="btn btn-primary">뒤로가기</a>
+                        <a href="{% url 'pickplace' %}" class="btn btn-primary pickcourse">선택하기</a>
                         </div>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
             </div>
         </header>
 
-        {% for place in placess %}
+        {% for place in places %}
         <!-- Page Content-->
         <section class="pt-4">
             <div class="container px-lg-5">

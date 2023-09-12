@@ -44,18 +44,11 @@ class Course(models.Model):
 class Cafe(models.Model):
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
-<<<<<<< HEAD
     head_image = models.ImageField(upload_to='single_pages/images/cafe/', null=True, blank=True)
     file_upload = models.FileField(upload_to='single_pages/files/cafe/', null=True, blank=True)
     # course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     tags = models.ManyToManyField(Tag, blank=True)
-=======
-
-    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
-
->>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
     create_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.SET_NULL)
@@ -65,50 +58,9 @@ class Cafe(models.Model):
         return markdown(self.content)
 
     def __str__(self):
-<<<<<<< HEAD
         return f'[{self.pk}] {self.subject}'
 
 class Food(models.Model):
-=======
-      return f'[{self.pk}] {self.subject}'
-    
-    def get_absolute_url(self):
-       return f'/cafe/{self.pk}'
-    
-class Food(models.Model):
-    subject = models.CharField(max_length=40)
-    content = MarkdownxField()
-
-    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
-
-    create_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-
-    def get_content_markdown(self):
-      return markdown(self.content)
-    
-    def __str__(self):
-      return f'[{self.pk}] {self.subject}'
-    
-class Place(models.Model):
-    subject = models.CharField(max_length=40)
-    content = MarkdownxField()
-
-    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
-    file_upload = models.FileField(upload_to='single_pages/files/', blank=True)
-
-    create_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-
-    def get_content_markdown(self):
-      return markdown(self.content)
-    
-    def __str__(self):
-      return f'[{self.pk}] {self.subject}'
-
-class Play(models.Model):
->>>>>>> 3ae35e781c762579f7f6926c0b2763a9dc16067c
     subject = models.CharField(max_length=40)
     content = MarkdownxField()
     head_image = models.ImageField(upload_to='single_pages/images/food/', null=True, blank=True)

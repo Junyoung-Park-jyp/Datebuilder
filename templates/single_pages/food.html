@@ -60,33 +60,37 @@
         </section>
         {% for food in foods %}
         <div class="modal fade" id="food{{food.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{food.pk}}ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="row">
-                            <img class="card-img-top" src="{{ food.head_image.url }}" alt="Card image cap">
-                            <div class="col-lg-12">
-                                <a href="#" class="shop-name">{{food.subject}} &rarr;</a>
-                                <p>{{food.content}}</p>
-                                <ul class="card-text">
-                                    <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
-                                    <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
-                                    </li>
-                                    <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
-                                </ul>
+            <form method="post" action="/single_pages/food/{{food.pk}}">
+                {% csrf_token %}
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row">
+                                <img class="card-img-top" src="{{ food.head_image.url }}" alt="Card image cap">
+                                <div class="col-lg-12">
+                                    <a href="#" class="shop-name">{{food.subject}} &rarr;</a>
+                                    <p>{{food.content}}</p>
+                                    <ul class="card-text">
+                                        <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
+                                        <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
+                                        </li>
+                                        <li><i class="fa-regular fa-clock"></i>{영업시간}</span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="info-option">
-                            <div class="option-title">
-                                <i class="fa-solid fa-map"></i>
-                                <span class="text">길찾기</span>
+                        <div class="modal-footer">
+                            <div class="info-option">
+                                <div class="option-title">
+                                    <i class="fa-solid fa-map"></i>
+                                    <span class="text">지도 보기</span>
+                                    <input type="submit" value="자세히보기">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         {% endfor %}
         <!-- Footer-->

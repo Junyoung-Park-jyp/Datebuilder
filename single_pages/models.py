@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdown
 import os
+from django.contrib.auth.models import User
 # Create your models here.
 
 #Category 모델 제작
@@ -118,4 +119,16 @@ class Post(models.Model):
         return f'[{self.pk}]{self.title}'
     # 포스트 연결 테스트 영역
 
-
+class Review(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_date = models.DateTimeField(auto_now=True, null=True)
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    def __str__(self):
+      return f'[{self.pk}]{self.title} :: {self.author}'
+    
+    def get_absolute_url(self):
+       return f'/review/{self.pk}'
+    

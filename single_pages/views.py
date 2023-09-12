@@ -1,5 +1,6 @@
+from typing import Any
 from django.shortcuts import render
-from .models import Post, Cafe, Food, Place
+from .models import Post, Cafe, Food, Place, Review
 from django.views.generic import *
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -50,11 +51,6 @@ def landing(request):
 # def place(request):
 #     return render(request, 'single_pages/place.html')
 
-def review(request):
-    return render(request, 'single_pages/review.html')
-
-def date_course(request):
-    return render(request, 'single_pages/date_course.html')
 
 
 class CafeList(ListView):
@@ -97,3 +93,30 @@ class PlaceList(ListView):
     template_name = "single_pages/place.html"
     context_object_name = "places"
     ordering = '-pk'
+
+class ReviewList(ListView):
+    model = Review
+    template_name = "single_pages/review.html"
+    context_object_name = "reviews"
+    ordering = '-pk'
+
+class ReviewSinglePage(DetailView):
+    model = Review
+    template_name = "single_pages/review_single_page.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewSinglePage, self).get_context_data()
+
+        return context
+    
+
+# def review(request):
+#     reviews = Review.objects.all().order_by('-pk')
+#     return render(request, 'single_pages/review.html', {'reviews':reviews})
+
+# def review_single_page(request, pk):
+#     review = Review.objects.get(pk=pk)
+#     return render(request, 'single_pages/review_single_page.html', {'review':review})
+
+def date_course(request):
+    return render(request, 'single_pages/date_course.html')

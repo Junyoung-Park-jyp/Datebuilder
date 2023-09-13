@@ -9,8 +9,8 @@ urlpatterns = [
     path('place/', views.PlaceList.as_view()),
     path('review/', views.ReviewList.as_view()),
     path('review/<int:pk>/', views.ReviewSinglePage.as_view(), name='reviewdetail'),
+    path('review/category/<str:slug>/', views.category_page),
     path('date_course/', views.date_course),
-    path('category/<str:slug>', views.category_page),
 ]
 
 if settings.DEBUG:

@@ -76,11 +76,11 @@
                                     <ul>
                                         {% for category in categories %}
                                         <li>
-                                            <a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.reviews_set.count }})</a>
+                                            <a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.review_set.count }})</a>
                                         </li>
                                         {% endfor %}
                                         <li>
-                                            <a href="/single_pages/category/no_category/">미분류 ({{ no_category_reviews_count }})</a>
+                                            <a href="/single_pages/review/category/no_category/">미분류 ({{ no_category_review.count }})</a>
                                         </li>
                                     </ul>
                                 </div>

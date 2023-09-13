@@ -21,6 +21,7 @@ def index(request):
         }
     )
 
+
 def single_post_page(request, pk):
     post = Post.objects.get(pk=pk)
 
@@ -49,6 +50,9 @@ def review(request):
 def introduce(request):
     return render(request, 'single_pages/introduce.html')
 
+
+def introduce(request):
+    return render(request, 'single_pages/introduce.html')
 
 def date_course(request):
     return render(request, 'single_pages/date_course.html')

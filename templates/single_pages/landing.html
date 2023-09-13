@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://kit.fontawesome.com/bca43c647d.js" crossorigin="anonymous"></script>
     <script defer src="{% static '/single_pages/js/map.js' %}"></script>
+    <!-- 제이쿼리 -->
+    <script src="{% static '/single_pages/js/jquery-3.7.0.min.js' %}"></script>
+    <!-- 스와이퍼 -->
     <script defer src="{% static '/single_pages/js/swiper.js' %}"></script>
     <!-- 네이버 맵 -->
     <script type="text/javascript"
@@ -26,15 +29,16 @@
     <!-- 메인 컨텐츠 -->
 
     <!-- Map 컨텐츠 영역 -->
-    <div id="map" style="height: 900px;"></div>
+    <div id="map" data-toggle="modal" data-target="#mapp" style="height: 900px;"></div>
     <!-- Map 컨텐츠 영역 끝 -->
 
     <!-- 좌표값의 정보를 카드에 뿌려주기 -->
     <div class="container">
-        <!-- 대문에 최신 포스트 나타내기 -->
-        <div class="col-lg-5 mt-5 map-info">
-            <div class="card mt-1 card-info">
-                <div class="card-body">
+        <!-- 지도 클릭시 modal 팝업 -->
+        <div class="modal fade" id="mapp" tabindex="-1" role="dialog" aria-labelledby="mappModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
                     <div class="modal-body">
                         <img class="card-img-top" src="http://placehold.it/350x300" alt="Card image cap">
                         <div class="card-info-text">

@@ -1,10 +1,11 @@
 // 마커표시
-var position = new naver.maps.LatLng(37.5112, 127.0981);
+var position = new naver.maps.LatLng(37.5665, 126.978);
+// 행정구역 설정
 var HOME_PATH = window.HOME_PATH || ".";
 
 var map = new naver.maps.Map("map", {
   center: position,
-  zoom: 15,
+  zoom: 10,
 });
 
 var marker = new naver.maps.Marker({
@@ -23,6 +24,17 @@ map.getPanes().floatPane.appendChild(menuLayer[0]);
 naver.maps.Event.addListener(map, "click", function (e) {
   markerList.push(marker);
   marker.setPosition(e.coord);
+  var feature = e.feature;
+  var regionName = feature.getProperty("area_name"); // 행정구역 이름으로 변경
+
+  if (feature.getProperty("focus") !== true) {
+    feature.setProperty("focus", true);
+
+    // 클릭한 행정구역에 대한 정보 표시
+    alert("선택한 행정구역: " + regionName);
+  } else {
+    feature.setProperty("focus", false);
+  }
 });
 // 키다운 이벤트
 naver.maps.Event.addListener(map, "keydown", function (e) {
@@ -111,3 +123,48 @@ naver.maps.Event.addListener(marker, "click", function (e) {
     infowindow.open(map, marker);
   }
 });
+
+// 행정구역 설정
+
+// 서울 행정구역 경계 데이터를 regionGeoJson 배열에 추가
+$.ajax({
+  url: "",
+  success: function (geojson) {
+    regionGeoJson.push(geojson);
+    loadCount++;
+
+    if (loadCount === 1) {
+      startDataLayer();
+    }
+  },
+});
+
+// startDataLayer 함수에서 스타일링 및 이벤트 처리를 진행합니다.
+function startDataLayer() {
+  // 행정구역 스타일링 설정
+  map.data.setStyle(function (feature) {
+    var styleOptions = {
+      fillColor: "#ff0000",
+      fillOpacity: 0.3,
+      strokeColor: "#ff0000",
+      strokeWeight: 2,
+      strokeOpacity: 0.8,
+    };
+
+    if (feature.getProperty("focus")) {
+      styleOptions.fillOpacity = 0.6;
+      styleOptions.fillColor = "#0f0";
+      styleOptions.strokeColor = "#0f0";
+      styleOptions.strokeWeight = 4;
+      styleOptions.strokeOpacity = 1;
+    }
+
+    return styleOptions;
+  });
+
+  // 행정구역 데이터 추가
+  regionGeoJson.forEach(function (geojson) {
+    map.data.addGeoJson(geojson);
+  });
+  // 툴팁 및 마우스 이벤트 리스너 등은 그대로 사용 가능
+}

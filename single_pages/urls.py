@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('search/<str:p>/', views.PostSearch.as_view()),
     path('food/', views.food),
     path('cafe/', views.CafeList.as_view()),
     path('place/', views.place),

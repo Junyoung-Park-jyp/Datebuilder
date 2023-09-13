@@ -3,22 +3,38 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
     <div class="container navbar-dark nav-fill">
       <a class="navbar-brand" href="/">Search</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <form class="form-inline my-2 my-lg-0 ml-auto col-lg-9">
-        <input class="form-control mr-sm-2 col-lg-7" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2 col-lg-7" type="search" placeholder="지하철 역으로 찾아보세요" aria-label="Search"
+          id="search-input" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" style="display: flex; align-items: center;"
+          onclick="searchPost()">
+          <i class="fas fa-search"></i> &nbsp;
+          <span class="blind">검색</span></button>
       </form>
     </div>
   </nav>
 </div>
 <!-- 네이게이션 바 만들기_부트스트랩 끝-->
+
+<!-- Search JavaScript -->
+<script>
+  function searchPost() {
+    let searchValue = document.getElementById('search-input').value.trim();
+    if (searchValue.length > 1) {
+      location.href = '/cafe/search/' + searchValue + '/'
+    }
+    else {
+      alert('검색어(' + searchValue + ')가 너무 짧습니다.');
+    }
+  };
+
+  document.getElementById('search-input').addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') {
+      searchPost();
+    }
+  });
+</script>

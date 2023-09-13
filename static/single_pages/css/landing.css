@@ -1,3 +1,14 @@
+/* nav 영역 */
+.nav-main {
+  background: #82d7d9;
+}
+.nav-user {
+  background: #8acb8d;
+  border-radius: 50%;
+}
+.nav-user i {
+  color: #f78d7f;
+}
 /* 맵 카드 영역 */
 .map-info {
   position: absolute;

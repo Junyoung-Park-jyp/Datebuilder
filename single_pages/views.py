@@ -1,44 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from django.views.generic import *
+from django.db.models import Q
 
-# 포스트 연결하기 테스트
-from single_pages.models import Post
-
-def index(request):
-    posts = Post.objects.all().order_by('-pk')
-
-    return render(
-        request,
-        'single_pages/landing.html',
-        {
-            'posts': posts,
-        }
-    )
-
-def single_post_page(request, pk):
-    post = Post.objects.get(pk=pk)
-
-    return render(
-        request,
-        'single_page/single_post_page.html',
-        {
-            'post': post,
-        }
-    )
-
-# 포스트 연결하기 테스트
-def landing(request):
-    recent_posts = Post.objects.order_by('-pk')[:3]
-    return render(
-        request,
-        'single_pages/landing.html',
-        {
-            'recent_posts': recent_posts,
-        }
-    )
-
-# 포스트 연결하기 테스트
 
 def food(request):
     return render(request, 'single_pages/food.html')
@@ -67,3 +31,20 @@ class PlaceList(ListView):
     model = Place
     template_name = "single_pages/place.html"
     context_object_name = "places"
+
+# 서치 
+class PostSearch(FoodList):
+    paginate_by = None
+
+    def get_queryset(self):
+        q = self.kwargs['q']
+        post_list = Post.object.filter(
+            Q(title__contains=q) | Q(tags__name__contains=q)
+        ).distinct()
+
+    def get_context_data(self, **kwargs):
+        context = super(PostSearch, self).get_context_data()
+        q = self.kwargs['q']
+        context['search_info'] = f'Search:{q} ({self.get_queryset().count()})'
+
+        return context

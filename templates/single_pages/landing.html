@@ -22,6 +22,7 @@
 <body>
     {% include 'single_pages/navbar.html' %}
     {% include 'single_pages/navbar_search.html' %}
+
     <!-- 메인 컨텐츠 -->
 
     <!-- Map 컨텐츠 영역 -->
@@ -38,7 +39,7 @@
                         <img class="card-img-top" src="http://placehold.it/350x300" alt="Card image cap">
                         <div class="card-info-text">
                             <ul class="card-text">
-                                <li><a href="#" class="shop-name">{가게이름} &rarr;</a></li>
+                                <li><a href="#" class="shop-name">{가게명} &rarr;</a></li>
                                 <li><i class="fas fa-map-marker-alt"></i><span class="text">{주소}</span></li>
                                 <li><i class="fa-solid fa-mobile-screen-button"></i><span class="text">{전화번호}</span>
                                 </li>
@@ -75,15 +76,15 @@
     <section class="slider">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper swiper-zoom-container">
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
-                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x800" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
+                <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -93,29 +94,28 @@
     <!-- 인기 맛집 슬라이드 -->
 
     <!-- 추천코스 영역 -->
-    <section style="background-color:#d4addc;">
+    <section style="background-color:#f2d7c3;">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6 text-success">
                     <h1 class="mt-5">Dateing</h1>
                     <b>데이트 코스가 고민인 당신에게 추천드립니다!</b>
-                    {% for post in recent_posts %}
                     <div class="card mt-1">
                         <div class="card-body">
+                            <div class="swiper-slide"><a href="#"><img src="http://placehold.it/300x300" alt=""></a>
+                            </div>
                             <h6>
-                                <a href="{{ post.get_absolute_url }}"
-                                    class="text-decoration-non text-dark">{{post.title}}</a>
+                                <a href="{{ play.get_absolute_url }}"
+                                    class="text-decoration-non text-dark">{{play.title}} 뭐라도 반응해라</a>
                             </h6>
                             <span class="badge badge-pill badge-light float-right">
                                 <p>여기에 카드가 들어온다</p>
-                                {{ post.author.username }}
+                                {{ play.author.username }}
                                 &nbsp;
                                 &nbsp;
-                                {{ post.created_at }}
                             </span>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>

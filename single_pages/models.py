@@ -12,9 +12,7 @@ class Category(models.Model):
     
     def __str__(self):
         return self.name
-    
-    def get_absolute_url(self):
-        return "notyet"
+
     class Meta:
         verbose_name_plural = 'Categories'
     
@@ -26,9 +24,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
     
-    def get_absolute_url(self):
-        return "notyet"
-#url주소는 차후 제작
+
     
 
 #Category, Tags 사용 예시

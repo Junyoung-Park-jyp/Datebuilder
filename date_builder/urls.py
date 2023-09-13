@@ -28,6 +28,7 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')),
     path('common/', include('common.urls', namespace='common')),
     path('single_pages/', include('single_pages.urls')),
+    path('introduce/', views.introduce),
     
 ]
 app_name = 'common'

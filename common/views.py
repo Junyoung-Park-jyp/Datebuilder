@@ -16,3 +16,6 @@ def signup(request):
     else:
         form = UserForm()
     return render(request, 'common/signup.html', {'form': form})
+
+def introduce(request):
+    return render(request, 'single_pages/introduce.html')

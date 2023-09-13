@@ -47,6 +47,10 @@ def landing(request):
 def review(request):
     return render(request, 'single_pages/review.html')
 
+def introduce(request):
+    return render(request, 'single_pages/introduce.html')
+
+
 def date_course(request):
     return render(request, 'single_pages/date_course.html')
 

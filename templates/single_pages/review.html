@@ -22,6 +22,7 @@
                 </div>
             </div>
         </header>
+<!-- Reviews -->
         <!-- Page content-->
         <div class="container">
             <div class="row">
@@ -36,7 +37,7 @@
                             {% endif %}
                                 <div class="card-body">
                                     {% if review.category %}
-                                        <span class="badge badge-secondary float-right">{{ review.cotegory }}</span>
+                                        <span class="badge badge-secondary float-right">{{ review.category }}</span>
                                     {% else %}
                                         <span class="badge badge-secondary float-right">미분류</span>
                                     {% endif %}
@@ -73,7 +74,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul>
-                                        {% for category in  %}
+                                        {% for category in categories %}
                                         <li>
                                             <a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.reviews_set.count }})</a>
                                         </li>
@@ -89,25 +90,7 @@
                 </div>
             </div>
         </div>
-        <!-- Nested row for non-featured blog posts-->
-        <!-- <div class="row">
-                        <div class="col-lg-6">
-                            {% for review in reviews %} -->
-                            <!-- Blog post-->
-                            <!-- <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">
-                                        Posted on {{review.created_at }}
-                                    </div>
-                                    <h2 class="card-title h4">{{ review.title }}</h2>
-                                    <p class="card-text">{{ review.content }}</p>
-                                    <a class="btn btn-primary" href="{{ review.get_absolute_url }}">Read more →</a>
-                                </div>
-                            </div> -->
-                            <!-- {% endfor %} -->
-                            
-                            
+                                                     
         <!-- Bootstrap core JS-->
         <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
         

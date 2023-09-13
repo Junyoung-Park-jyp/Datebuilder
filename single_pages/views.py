@@ -76,13 +76,32 @@ class ReviewList(ListView):
         context['categories'] = Category.objects.all()
         context['no_category_reviews_count'] = Review.objects.filter(category=None).count()
         return context
+    
+def category_page(request, slug):
+    global review
+    if  slug == 'no_category':
+        category = '미분류'
+        review = Review.objects.filter(category=None)
+    else:
+        category = Category.objects.get(slug=slug)
+        review = Review.objects.filter(category=category)
+
+    return render(request, 'single_pages/review.html', {
+        'review': review,
+        'categories': Category.objects.all(),
+        'no_category_review_count' : Review.objects.filter(category=None).count()
+    })
+
 
 class ReviewSinglePage(DetailView):
     model = Review
     template_name = "single_pages/review_single_page.html"
+    # context_object_name = "review"
 
     def get_context_data(self, **kwargs):
         context = super(ReviewSinglePage, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_reviews_count'] = Review.objects.filter(category=None).count()
         return context
 
 # 함수형 view들

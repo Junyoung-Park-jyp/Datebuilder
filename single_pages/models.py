@@ -127,7 +127,6 @@ class Review(models.Model):
     updated_date = models.DateTimeField(auto_now=True, null=True)
     head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     
     def __str__(self):

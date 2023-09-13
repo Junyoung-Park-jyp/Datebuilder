@@ -1,8 +1,9 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post, Cafe, Food, Place, Review, Category
 from django.views.generic import *
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # 포스트 연결하기 테스트
 from single_pages.models import Post
@@ -104,6 +105,11 @@ class ReviewSinglePage(DetailView):
         # context['categories'] = Category.objects.all()
         # context['no_category_reviews_count'] = Review.objects.filter(category=None).count()
         return context
+    
+class ReviewCreate(CreateView):
+    model = Review
+    fields = ['title', 'content', 'head_image', 'category']
+
 
 # 함수형 view들
 # def food(request):

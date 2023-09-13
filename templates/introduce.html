@@ -1,0 +1,47 @@
+{% load static %}
+{% block title %} {% endblock %}
+{% include 'single_pages/navbar.html' %}
+{% block content %}
+<div class="mt-4 row">
+  <ul class="mx-auto nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#kk">강귀권</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#kobs95">고반석</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#ha">김현아</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#jyp">박준영</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#rj">최련정</a>
+    </li>
+  </ul>
+</div>
+<div class="container mb-4">
+  <div class="card tab-content">
+    <div class="tab-pane fade show active" id="kk">
+      <div class="card-body">
+
+      </div>
+    </div>
+    <div class="card tab-pane fade" id="kobs95">
+      <div class="card-body"></div>
+    </div>
+    <div class="card tab-pane fade" id="ha">
+      <div class="card-body"></div>
+    </div>
+    <div class="card tab-pane fade" id="jyp">
+      <div class="card-body"></div>
+    </div>
+    <div class="card tab-pane fade" id="rj">
+      <div class="card-body"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% include 'single_pages/footer.html' %}

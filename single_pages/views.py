@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.http import JsonResponse
 from django.views.generic import *
 from django.http import JsonResponse
 import json
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import CourseForm
 
 # 포스트 연결하기 테스트
 from single_pages.models import Post
@@ -43,20 +44,41 @@ def landing(request):
     )
 
 def review(request):
-    return render(request, 'build/review.html')
+    return render(request, 'single_pages/review.html')
+
+def introduce(request):
+    return render(request, 'single_pages/introduce.html')
+
 
 def date_course(request):
-    return render(request, 'build/date_course.html')
+    return render(request, 'single_pages/date_course.html')
 
-def cafe_detail(request):
-    return render(request, 'single_pages/cafe_detail.html')
-
-def food_detail(request):
-    return render(request, 'single_pages/food_detail.html')
-
-def place_detail(request):
-    return render(request, 'single_pages/place_detail.html')
-
+class CafeDetail(DetailView):
+    model = Cafe
+    template_name = "single_pages/cafe_detail.html"
+    pk_url_kwarg = 'cafe_id'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['categories'] = Category.objects.all()
+        return context
+    
+class FoodDetail(DetailView):
+    model = Food
+    template_name = "single_pages/food_detail.html"
+    pk_url_kwarg = 'food_id'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['categories'] = Category.objects.all()
+        return context
+    
+class PlaceDetail(DetailView):
+    model = Place
+    template_name = "single_pages/place_detail.html"
+    pk_url_kwarg = 'place_id'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['categories'] = Category.objects.all()
+        return context
 
 class CafeList(ListView):
     model = Cafe
@@ -75,44 +97,14 @@ class PlaceList(ListView):
     template_name = "single_pages/place.html"
     context_object_name = "places"
 
-from django.http import JsonResponse
-import json
-
 def create_course(request):
     if request.method == 'POST':
-        # 클라이언트에서 전달한 데이터 ID 배열 가져오기
-        data_ids = json.loads(request.body)
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # 원하는 로직 추가 가능
+            return redirect('pickfood')  # 선택 후 리다이렉트할 URL로 수정
+    else:
+        form = CourseForm()
 
-        # 선택한 데이터 ID 배열을 저장할 리스트
-        selected_data = []
-
-        # 각 데이터 ID를 순회하며 객체를 조회하고 selected_data에 추가
-        for data_id in data_ids:
-            selected_cafe = get_object_or_404(Cafe, pk=data_id)
-            selected_food = get_object_or_404(Food, pk=data_id)
-            selected_place = get_object_or_404(Place, pk=data_id)
-
-            selected_data.append({
-                'cafe_subject': selected_cafe.subject,
-                'cafe_content': selected_cafe.content,
-                'food_subject': selected_food.subject,
-                'food_content': selected_food.content,
-                'place_subject': selected_place.subject,
-                'place_content': selected_place.content,
-            })
-
-        # Course 모델에 데이터 저장
-        course = Course.objects.create(
-            subject=", ".join([f"{data['cafe_subject']}, {data['food_subject']}, {data['place_subject']}" for data in selected_data]),
-            content=", ".join([f"{data['cafe_content']}, {data['food_content']}, {data['place_content']}" for data in selected_data]),
-        )
-
-        # JSON 응답 반환
-        response_data = {
-            'message': 'Course created successfully!',
-            'course_id': course.pk  # 새로 생성된 Course의 ID 반환
-        }
-        return JsonResponse(response_data)
-
-    return render(request, 'single_pages/create_course.html')
-    ordering = '-pk'
+    return render(request, 'single_pages/createcourse.html', {'form': form})

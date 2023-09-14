@@ -33,25 +33,29 @@
         </div>
     </header>
     <!-- Page Content-->
-    <div class="li-section">
-        <ul class="content-wrap">
-            {% for place in places %}
-            <li><a href="#" data-toggle="modal" data-target="#place{{place.pk}}">
-                    <figure><img src="{{ place.head_image.url }}" alt=""></figure>
-                    <dl>
-                        <dt>
-                            {{ place.subject }}
-                        </dt>
-                        <dd>
-                            {{ place.content }}
-                        </dd>
-                    </dl>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% include 'single_pages/pagination.html' %}
+    <section class="pt-4">
+        <div class="container px-lg-5">
+            <!-- Page Features-->
+            <div class="li-section mx-2">
+                <ul class="content-wrap justify-content-between">
+                    {% for place in places %}
+                    <li><a href="#" data-toggle="modal" data-target="#place{{place.pk}}">
+                            <figure><img src="{{ place.head_image.url }}" alt=""></figure>
+                            <dl>
+                                <dt>
+                                    {{ place.subject }}
+                                </dt>
+                                <dd>
+                                    {{ place.content }}
+                                </dd>
+                            </dl>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% include 'single_pages/pagination.html' %}
 
     {% for place in places %}
     

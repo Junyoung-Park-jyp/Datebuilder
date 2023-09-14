@@ -3,18 +3,18 @@ var container = document.getElementById("map"); //지도를 담을 영역의 DOM
 var options = {
   //지도를 생성할 때 필요한 기본 옵션
   center: new kakao.maps.LatLng(37.5665, 126.978), //지도의 중심좌표.
-  level: 3, //지도의 레벨(확대, 축소 정도)
+  level: 9, //지도의 레벨(확대, 축소 정도)
 };
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
 // 지도를 클릭한 위치에 표출할 마커입니다
-var marker = new kakao.maps.Marker({
-  // 지도 중심좌표에 마커를 생성합니다
-  position: map.getCenter(),
-});
+// var marker = new kakao.maps.Marker({
+// 지도 중심좌표에 마커를 생성합니다
+// position: map.getCenter(),
+// });
 // 지도에 마커를 표시합니다
-marker.setMap(map);
+// marker.setMap(map);
 
 // 지도에 폴리곤으로 표시할 영역데이터 배열입니다
 // var areas = [
@@ -353,7 +353,7 @@ marker.setMap(map);
 //   },
 // ];
 
-var geojsonurl = "/resources/json/${./seoul.json}";
+var geojsonurl = "/resources/json/${./DATEBUILDER/single_pages/static/js/seoulgungu.geojson}";
 // 제이슨을 활용하여 지도에 폴리곤영역 그리기
 $.getJSON(geojsonurl, function (geojson) {
   var data = geojson.featuers;
@@ -427,7 +427,7 @@ function displayArea(coordinates, name) {
 
     // 지도를 클릭된 폴리곤의 중앙 위치를 기준으로 확대
     map.setLevel(lvevl, {
-      anchor: centroid(points),
+      anchor: centroid(point),
       animate: {
         duration: 350, // 확대 애니메이션 시간
       },

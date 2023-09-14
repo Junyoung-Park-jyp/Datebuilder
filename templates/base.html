@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
     <!-- pybo CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap.min.js' %}"></script>
     <title>Hello, pybo!</title>
 </head>
 <body>
@@ -16,15 +19,13 @@
     {% include 'navbar.html' %}
     <!-- 기본 템플릿 안에 삽입될 내용 Start -->
     {% block content %}
-    {% endblock %}
+    {% endblock content %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
     <!-- jQuery JS -->
-    <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
-    <!-- Bootstrap JS -->
-    <script src="{% static 'bootstrap.min.js' %}"></script>
+
     <!-- 자바스크립트 Start -->
     {% block script %}
-    {% endblock %}
+    {% endblock script %}
     <!-- 자바스크립트 End -->
     
 </body>

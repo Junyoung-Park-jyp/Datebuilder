@@ -1,6 +1,6 @@
 from typing import Any
 from django.shortcuts import render, redirect
-from .models import Post, Cafe, Food, Place, Review, Category
+from .models import Post, Cafe, Food, Place, Review, Category, DateCourse
 from django.views.generic import *
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -65,6 +65,13 @@ class PlaceList(ListView):
     ordering = '-pk'
     paginate_by = 4
 
+class DateCourseList(ListView):
+    model = DateCourse
+    template_name = "single_pages/date_course.html"
+    context_object_name = "courses"
+    ordering = '-pk'
+    paginate_by = 8
+    
 class ReviewList(ListView):
     model = Review
     template_name = "single_pages/review.html"
@@ -98,36 +105,12 @@ def category_page(request, slug):
 class ReviewSinglePage(DetailView):
     model = Review
     template_name = "single_pages/review_single_page.html"
-    # context_object_name = "review"
 
     def get_context_data(self, **kwargs):
         context = super(ReviewSinglePage, self).get_context_data()
-        # context['categories'] = Category.objects.all()
-        # context['no_category_reviews_count'] = Review.objects.filter(category=None).count()
         return context
     
 class ReviewCreate(CreateView):
     model = Review
     fields = ['title', 'content', 'head_image', 'category']
 
-
-# 함수형 view들
-# def food(request):
-#     return render(request, 'single_pages/food.html')
-
-# def cafe(request):
-#     return render(request, 'single_pages/cafe.html')
-
-# def place(request):
-#     return render(request, 'single_pages/place.html')
-
-# def review(request):
-#     reviews = Review.objects.all().order_by('-pk')
-#     return render(request, 'single_pages/review.html', {'reviews':reviews})
-
-# def review_single_page(request, pk):
-#     review = Review.objects.get(pk=pk)
-#     return render(request, 'single_pages/review_single_page.html', {'review':review})
-
-def date_course(request):
-    return render(request, 'single_pages/date_course.html')

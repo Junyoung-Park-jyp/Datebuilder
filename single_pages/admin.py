@@ -14,6 +14,8 @@ admin.site.register(Cafe, MarkdownxModelAdmin )
 admin.site.register(Food, MarkdownxModelAdmin )
 admin.site.register(Place, MarkdownxModelAdmin )
 admin.site.register(Review, MarkdownxModelAdmin )
+admin.site.register(DateCourse, MarkdownxModelAdmin )
+admin.site.register(Comment)
 
 
 admin.site.register(Restaurant,MarkdownxModelAdmin )

@@ -115,6 +115,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, null=True)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    content = MarkdownxField()
 
     def __str__(self):
         return f'[{self.pk}]{self.title}'
@@ -135,3 +136,23 @@ class Review(models.Model):
     def get_absolute_url(self):
        return f'/review/{self.pk}'
     
+    def get_content_markdown(self):
+       return markdown(self.content)
+  
+class Comment(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+      return f'[{self.author}]{self.content}'
+    
+    def get_absolute_url(self):
+       return f'{self.reviews.get_absolute_url()}#comment-{self.pk}'
+    
+class DateCourse(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.TextField()
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)

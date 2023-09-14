@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'markdownx',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'common.apps.CommonConfig', 
 ]
 

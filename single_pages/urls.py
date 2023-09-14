@@ -11,7 +11,7 @@ urlpatterns = [
     path('review/<int:pk>/', views.ReviewSinglePage.as_view(), name='reviewdetail'),
     path('review/category/<str:slug>/', views.category_page),
     path('review/create_review/', views.ReviewCreate.as_view()),
-    path('date_course/', views.date_course),
+    path('date_course/', views.DateCourseList.as_view()),
 ]
 
 if settings.DEBUG:

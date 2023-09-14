@@ -17,13 +17,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from pybo.views import base_views
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
-    path('common/', include('common.urls')),
-    path('', base_views.index, name='index'), # / 페이지에 해당하는 path
-
+    path('common/', include('common.urls', namespace='common')),
+    # path('', base_views.index, name='index'), # / 페이지에 해당하는 path
+    path('' , views.index, name='index'),
+    path('nav/', views.main),
+    path('markdownx/', include('markdownx.urls')),
+    path('single_pages/', include('single_pages.urls')),
     
 
-]
+]  
+
+app_name = 'common'
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

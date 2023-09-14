@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.http import JsonResponse
+from typing import Any
 from django.views.generic import *
 from django.http import JsonResponse
 import json
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .forms import CourseForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # 포스트 연결하기 테스트
 from single_pages.models import Post
@@ -57,6 +59,7 @@ def introduce(request):
 def date_course(request):
     return render(request, 'single_pages/date_course.html')
 
+
 class CafeDetail(DetailView):
     model = Cafe
     template_name = "single_pages/cafe_detail.html"
@@ -91,11 +94,14 @@ class CafeList(ListView):
     ordering = '-pk'
     paginate_by = 4
    
+
 class FoodList(ListView):
     model = Food
     template_name = "single_pages/food.html"
     context_object_name = "foods"
     ordering = '-pk'
+    paginate_by = 4
+
 class PlaceList(ListView):
     model = Place
     template_name = "single_pages/place.html"
@@ -112,3 +118,55 @@ def create_course(request):
         form = CourseForm()
 
     return render(request, 'single_pages/createcourse.html', {'form': form})
+    ordering = '-pk'
+    paginate_by = 4
+
+class DateCourseList(ListView):
+    model = DateCourse
+    template_name = "single_pages/date_course.html"
+    context_object_name = "courses"
+    ordering = '-pk'
+    paginate_by = 8
+    
+class ReviewList(ListView):
+    model = Review
+    template_name = "single_pages/review.html"
+    context_object_name = "reviews"
+    ordering = '-pk'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewList, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_reviews_count'] = Review.objects.filter(category=None).count()
+        return context
+    
+def category_page(request, slug):
+    if  slug == 'no_category':
+        category = '미분류'
+        review = Review.objects.filter(category=None)
+    else:
+        category = Category.objects.get(slug=slug)
+        review = Review.objects.filter(category=category)
+
+    return render(request, 'single_pages/review.html', {
+        'review': review,
+        'categories': Category.objects.all(),
+        'no_category_reviews_count': Review.objects.filter(category=None).count(),
+        'category': category,
+    })
+
+
+
+class ReviewSinglePage(DetailView):
+    model = Review
+    template_name = "single_pages/review_single_page.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewSinglePage, self).get_context_data()
+        return context
+    
+class ReviewCreate(CreateView):
+    model = Review
+    fields = ['title', 'content', 'head_image', 'category']
+

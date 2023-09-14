@@ -5,7 +5,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('review/', views.review),
-    path('date_course/', views.date_course),
     path('createcourse/', views.create_course, name='createcourse'),
     path('cafe/', views.CafeList.as_view(), name='pickcafe'),
     path('food/', views.FoodList.as_view(), name='pickfood'),
@@ -14,6 +13,11 @@ urlpatterns = [
     path('food/<int:food_id>/', views.FoodDetail.as_view(), name='food_detail'),
     path('place/<int:place_id>/', views.PlaceDetail.as_view(), name='place_detail'),
     path('introduce/', views.introduce, name='introduce'),
+    path('review/', views.ReviewList.as_view()),
+    path('review/<int:pk>/', views.ReviewSinglePage.as_view(), name='reviewdetail'),
+    path('review/category/<str:slug>/', views.category_page),
+    path('review/create_review/', views.ReviewCreate.as_view()),
+    path('date_course/', views.DateCourseList.as_view()),
 ]
 
 if settings.DEBUG:

@@ -31,70 +31,27 @@
             </div>
         </div>
     </header>
-
     <!-- Page Content-->
-    <section class="pt-4">
-        <div class="container px-lg-5">
-            <!-- Page Features-->
-            <div class="li-section mx-2">
-                <ul class="content-wrap justify-content-between">
-                    {% for place in places %}
-                    <li><a href="#" data-toggle="modal" data-target="#place{{place.pk}}">
-                            <figure><img src="{{ place.head_image.url }}" alt=""></figure>
-                            <dl>
-                                <dt>
-                                    {{ place.subject }}
-                                </dt>
-                                <dd>
-                                    {{ place.content }}
-                                </dd>
-                            </dl>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+    <div class="li-section">
+        <ul class="content-wrap">
+            {% for place in places %}
+            <li><a href="#" data-toggle="modal" data-target="#place{{place.pk}}">
+                    <figure><img src="{{ place.head_image.url }}" alt=""></figure>
+                    <dl>
+                        <dt>
+                            {{ place.subject }}
+                        </dt>
+                        <dd>
+                            {{ place.content }}
+                        </dd>
+                    </dl>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% include 'single_pages/pagination.html' %}
 
-        <!-- Pagination-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-            {% if is_paginated %}
-            <ul class="pagination">
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo; 이전 </span>
-                    </a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link" aria-hidden="true">&raquo;</span>
-                </li>
-                {% endif %}
-                {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">{{ num }}</span>
-                </li>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <li class="page-item"><a
-                        class="page-link" href="?page={{ num }}">{{ num }}</a></li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                            <span aria-hidden="true">다음 &raquo;</span>
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disabled">
-                        <span class="page-link" aria-hidden="true">&raquo;</span>
-                    </li>
-                    {% endif %}
-            </ul>
-            {% endif %}
-        </nav>
-    </section>
     {% for place in places %}
     
         <div class="modal fade" id="place{{place.pk}}" tabindex="-1" role="dialog" aria-labelledby="{{place.pk}}ModalLabel" aria-hidden="true">
@@ -149,4 +106,4 @@
 </body>
 {% endblock %}
 
-</html> 
+</html>

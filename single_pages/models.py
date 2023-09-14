@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdown
 import os
+from django.contrib.auth.models import User
 # Create your models here.
 
 #Category 모델 제작
@@ -13,6 +14,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    
+    def get_absolute_url(self):
+        return f'/single_pages/review/category/{self.slug}'
+    
     class Meta:
         verbose_name_plural = 'Categories'
     
@@ -100,8 +105,44 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, null=True)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    content = MarkdownxField()
 
     def __str__(self):
         return f'[{self.pk}]{self.title}'
     # 포스트 연결 테스트 영역
 
+class Review(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_date = models.DateTimeField(auto_now=True, null=True)
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    
+    def __str__(self):
+      return f'[{self.pk}]{self.title} :: {self.author}'
+    
+    def get_absolute_url(self):
+       return f'/review/{self.pk}'
+    
+    def get_content_markdown(self):
+       return markdown(self.content)
+  
+class Comment(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+      return f'[{self.author}]{self.content}'
+    
+    def get_absolute_url(self):
+       return f'{self.reviews.get_absolute_url()}#comment-{self.pk}'
+    
+class DateCourse(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.TextField()
+    head_image = models.ImageField(upload_to='single_pages/images/', blank=True)

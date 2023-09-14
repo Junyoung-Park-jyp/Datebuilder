@@ -13,7 +13,7 @@ urlpatterns = [
     path('cafe/<int:cafe_id>/', views.CafeDetail.as_view(), name='cafe_detail'),
     path('food/<int:food_id>/', views.FoodDetail.as_view(), name='food_detail'),
     path('place/<int:place_id>/', views.PlaceDetail.as_view(), name='place_detail'),
-    path('introduce/', views.introduce),
+    path('introduce/', views.introduce, name='introduce'),
 ]
 
 if settings.DEBUG:

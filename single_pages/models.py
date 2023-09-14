@@ -154,5 +154,16 @@ class Comment(models.Model):
     
 class DateCourse(models.Model):
     title = models.CharField(max_length=30)
+    hours = models.CharField(max_length=30)
+    best = models.CharField(max_length=30)
     content = models.TextField()
     head_image = models.ImageField(upload_to='single_pages/images/', blank=True)
+
+    def get_content_markdown(self):
+      return markdown(self.content)
+    
+    def __str__(self):
+      return f'[{self.pk}] {self.title}'
+    
+    def get_absolute_url(self):
+       return f'/date_course/{self.pk}'

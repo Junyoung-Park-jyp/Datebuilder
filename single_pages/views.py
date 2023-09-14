@@ -70,7 +70,7 @@ class DateCourseList(ListView):
     template_name = "single_pages/date_course.html"
     context_object_name = "courses"
     ordering = '-pk'
-    paginate_by = 8
+    paginate_by = 4
     
 class ReviewList(ListView):
     model = Review

@@ -1,29 +1,11 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>food page</title>
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <script defer src="{% static 'single_pages/js/course.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}"
-        media="screen">
-    <link rel="stylesheet" href="{% static 'single_pages/css/cafe_style.css' %}">
-</head>
 {% include 'single_pages/navbar.html' %}
-{% block content %}
 
-<body>
     <!-- Header-->
     <header class="py-5">
         <div class="container px-lg-5">
             <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                <img class="card-img-top main-bg" src="{% static 'images/food1.jpg' %}" alt="음식점">
+                <img class="card-img-top main-bg" src="/static/images/food1.jpg" alt="음식점">
                 <div class="m-4 m-lg-5">
                     <h1 class="display-5 fw-bold">Perfect Meal for you!</h1>
                     <br>
@@ -109,7 +91,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
         crossorigin="anonymous"></script>
-</body>
-{% endblock %}
 
-</html> 
+
